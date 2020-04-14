@@ -50,7 +50,7 @@
            <i class="fas fa-times" onclick="toggleLogin()"></i>
          </div>
          <div class="newForm">
-         <form action="#" class="form">
+         <div action="#" class="form">
             <input type="text" id="LEmail" placeholder="Enter your Email" />
             <input type="password"  id="LPassword" placeholder="Enter your Password"/>
             <div class="loginbutton">
@@ -58,6 +58,7 @@
           </br>
           </br>
           </br>
+      <!--
           <button class="btn" id="sign-up"><a>Sign in with google</a></button>
           </br>
           </br>
@@ -68,7 +69,8 @@
           </br>
           </div>
          <h2>Forget Password?</h2>
-          </form>
+         -->
+            </div>
           </div>  
          </div> <!-- login closing tag -->
          </div> <!-- overlay closing tag -->
@@ -125,8 +127,7 @@
          <ul>
             <li id="navPropertyOwner" style="display: none;"><a href="propertyOwnerDashboard.html"> Maneg Properties</a></li>
             <li><a href="HolidayHomes.html" style="color: grey; text-decoration: none;"> Holiday Homes</a></li>
-            <li><a href="Login.html" style="color: grey; text-decoration: none;">Sign In</a></li>
-            <li><a  href="MemberDashboard.html" style="color: grey; text-decoration: none;"> profile</a></li>
+
             <li><a  href="Memberregisteration.html" style="color: grey; text-decoration: none;"> register</a></li>
          </ul>
          </nav>
@@ -459,55 +460,63 @@ firebase.auth.Auth.Persistence.LOCAL;
 </script>
 
 <script>
+
 function Login(){
 
-    //window.alert("Helooooo");
+var email = document.getElementById('LEmail').value;
+var password = document.getElementById('LPassword').value;
 
-      var email = document.getElementById('LEmail').value;
-        var password = document.getElementById('LPassword').value;
-       if (email.length < 4) {
-        window.alert('Please enter an email address.');
-        return;
-      }
-       if (password.length < 4) {
-        window.alert('Please enter a password.');
-        return;
-      }
-    var result = firebase.auth().signInWithEmailAndPassword(email , password);
-    result.then( function(user){
-      var currentUser = firebase.auth().currentUser
-      window.alert("Welcome Back: "+currentUser.email);
-     // writeCookie('user',currentUser,7);
-     sessionStorage.setItem('userId22',currentUser.uid);
-     if(currentUser.uid != null){
+   if (email.length < 4) {
+    window.alert('Please enter an email address.');
+    return;
+  }
+   if (password.length < 4) {
+    window.alert('Please enter a password.');
+    return;
+  }
+firebase.auth().signInWithEmailAndPassword(email , password).then( function(user){
+
   
-  firebase.database().ref('MEMBER').child(currentUser.uid).once('value').then(function(snapshot) {
-    var userinfo = snapshot.val(); 
-    var isOwner=userinfo['PropertyOwner'];
-   
-  if(isOwner){
-    window.location.href = "propertyOwnerDashboard.html";
-    }
-  else {
-    window.location.href = "MemberDashboard.html";
-  }
-   })}    
-  })
-  .catch(function(error){
-    alert("Something went wrong, please try again.", error);
-  });
+  var currentUser = firebase.auth().currentUser
+  window.alert("Welcom Back: "+currentUser.email);
+
+ sessionStorage.setItem('userId22',currentUser.uid);
+ if(currentUser.uid != null)
+{
+
+firebase.database().ref('MEMBER').child(currentUser.uid).once('value').then(function(snapshot) {
+var userinfo = snapshot.val(); 
+var isOwner=userinfo['PropertyOwner'];
+alert(isOwner);
+
+
+if(isOwner){
+window.location.href = "OwnerDashboard.html";
+
 }
-function writeCookie(name,value,days) {
-  var date, expires;
-  if (days) {
-      date = new Date();
-      date.setTime(date.getTime()+(days*24*60*60*1000));
-      expires = "; expires=" + date.toGMTString();
-          }else{
-      expires = "";
-  }
-  document.cookie = name + "=" + value + expires + "; path=/";
+else
+{
+window.location.href = "MemberDashboard.html";
 }
+
+})
+
+
+}
+
+})
+.catch(function(error){
+alert("Login Failed!", error);
+});
+//}
+//else 
+//{
+//  window.alert("Please fill out all fields");
+//}
+
+
+}
+
 </script>
 
 
