@@ -39,21 +39,21 @@
   <!-- //////////////////////////////////// -->
         <div class="account">
         <button class="btn btn-secondary" id="sign-upP" onclick="toggleSignUpP()"><a>Sign Up as a Property owner</a></button>
-        <button class="btn btn-secondary" id="sign-upM" onclick="toggleSignUpM()"><a>Sign Up as a Member</a></button>
+        <button class="btn btn-secondary" id="sign-up" onclick="toggleSignUpM()"><a>Sign Up as a Member</a></button>
         <button class="btn btn-secondary" id="sign-in" onclick="toggleLogin()"><a >Sign in</a></button>
         </div>
 
          <div class="overlay">
          <div class="login">
          <div class="header2">
-           <h2>Sign in</h2>
+           <h1>Sign in</h1>
            <i class="fas fa-times" onclick="toggleLogin()"></i>
          </div>
-
          <div class="newForm">
          <div action="#" class="form">
             <input type="text" id="LEmail" placeholder="Enter your Email" />
             <input type="password"  id="LPassword" placeholder="Enter your Password"/>
+            <!-- heeeeree-->
             <div class="loginbutton">
           <button onclick="Login()">Login</button>
           </br>
@@ -73,7 +73,6 @@
          -->
             </div>
           </div>  
-
          </div> <!-- login closing tag -->
          </div> <!-- overlay closing tag -->
 
@@ -81,7 +80,7 @@
          <div class="overlay2">
          <div class="login2">
          <div class="header2">
-           <h2>Sign Up as Property Owner</h2>
+           <h1>Sign Up as Property Owner</h1>
            <i class="fas fa-times" onclick="toggleSignUpP()"></i>
          </div>
           <div class="newForm2">
@@ -104,7 +103,7 @@
      <div class="overlay3">
          <div class="login3">
          <div class="header3">
-           <h2>Sign Up as a Member</h2>
+           <h1>Sign Up as a Member</h1>
            <i class="fas fa-times" onclick="toggleSignUpM()"></i>
          </div>
           <div class="newForm3">
@@ -127,15 +126,10 @@
 <!----->
          <nav class="main-nav">
          <ul>
-
             <li id="navPropertyOwner" style="display: none;"><a href="propertyOwnerDashboard.html"> Maneg Properties</a></li>
             <li><a href="HolidayHomes.html" style="color: grey; text-decoration: none;"> Holiday Homes</a></li>
 
             <li><a  href="Memberregisteration.html" style="color: grey; text-decoration: none;"> register</a></li>
-
-            <li><a href="index.html" style="color: grey; text-decoration: none;">Home</a></li>
-            <li><a href="HolidayHomes.html" style="color: grey; text-decoration: none;">Holiday Homes</a></li>
-
          </ul>
          </nav>
          </header>
@@ -473,39 +467,9 @@ function Login(){
 var email = document.getElementById('LEmail').value;
 var password = document.getElementById('LPassword').value;
 
-
    if (email.length < 4) {
     window.alert('Please enter an email address.');
     return;
-
-      var email = document.getElementById('LEmail').value;
-        var password = document.getElementById('LPassword').value;
-       if (email.length < 4) {
-        window.alert('Please enter an email address.');
-        return;
-      }
-       if (password.length < 4) {
-        window.alert('Please enter a password.');
-        return;
-      }
-    var result = firebase.auth().signInWithEmailAndPassword(email , password);
-    result.then( function(user){
-      var currentUser = firebase.auth().currentUser
-      window.alert("Welcome Back: "+currentUser.email);
-     // writeCookie('user',currentUser,7);
-     sessionStorage.setItem('userId22',currentUser.uid);
-     if(currentUser.uid != null){
-  
-  firebase.database().ref('MEMBER').child(currentUser.uid).once('value').then(function(snapshot) {
-    var userinfo = snapshot.val(); 
-    var isOwner=userinfo['PropertyOwner'];
-   
-  if(isOwner){
-    window.location.href = "OwnerDashboard.html";
-    }
-  else {
-    window.location.href = "NewMemberDashboard.html";
-
   }
    if (password.length < 4) {
     window.alert('Please enter a password.');
