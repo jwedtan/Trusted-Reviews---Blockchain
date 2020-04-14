@@ -79,35 +79,10 @@ App = {
           console.log("Desc : "+result[3]);
           console.log("address : "+result[4]);
           console.log("City : "+result[5]);
-          console.log("Rent : "+result[6]);
-          console.log("Property Status:"+result[7]);
+         // console.log("Rent : "+result[6]);
+          //console.log("Property Status:"+result[7]);
 
-  //         //load the new added product
-  //         var petsRow = $('#properties');
-  //         var petTemplate = $('#petTemplate');
-
-  //         petTemplate.find('.name').text(result[1]);
-  //         // petTemplate.find('img').attr('src', data[i].picture);
-  //         petTemplate.find('.type').text(result[2]);
-  //         petTemplate.find('.desc').text(result[3]);
-  //         petTemplate.find('.add').text(result[4]);
-  //         petTemplate.find('.city').text(result[5]);
-  //         petTemplate.find('.rent').text(result[6]);
-  //         petTemplate.find('.btn-checkin').attr('data-id', result[0]);
-  //         petTemplate.find('.reviewbox').attr('id', result[0]);
-  //         petTemplate.find('.btn-review').attr('id', result[0]);
-  //         petTemplate.find('.get-all-reviews').attr('id', result[0]);
-
-
-
-          /*petTemplate.find('.btn-buy').attr('data-id', result[0].c[0]);
-          petTemplate.find('.btn-buy').attr('data-attribute', result[3].c[0]);
-          petTemplate.find('.btn-review').attr('data-id', result[0].c[0]);
-          petTemplate.find('.btn-review').attr('id', result[0].c[0]);
-          petTemplate.find('.get-review').attr('id', result[0].c[0]);
-          petTemplate.find('.get-all-reviews').attr('id', result[0].c[0]);
-          petTemplate.find('.reviewbox').attr('id', result[0].c[0]);*/
-  //         petsRow.append(petTemplate.html());
+ 
     
         });
   },
@@ -133,10 +108,6 @@ App = {
       });
   },
 
-  /*markcheckin: function(){
-     var petTemplate = $('#petTemplate');
-      petTemplate.find('.btn-checkin').attr('disabled', true);
-  },*/
 
   AddReview: function(){
 
@@ -150,6 +121,7 @@ App = {
       }).then(function(result) {
         console.log("Reviewed");
         console.log(result);
+        
 
       });
       App.GetReviews(id);
@@ -177,6 +149,7 @@ App = {
         propInstance = instance;
         return propInstance.getAReview(id,index).then(function(result) {
         console.log("Reviews:" +result);
+       
          // var reviewrow = $('#ReviewRow');
          //  var revTemplate = $('#reviewTemplate');
          //  revTemplate.find('.reviewholder').text(result[0]);
@@ -201,18 +174,18 @@ App = {
         var resultCity = e2.options[e2.selectedIndex].text;
         // var city = resultCity.value;
     
-    var id = document.getElementById('OtherInformation').value
+    //var id = document.getElementById('OtherInformation').value
     var name = document.getElementById('Name').value
     
     var desc = document.getElementById('Des').value
     var address = document.getElementById('Address').value
    
-    var rent = document.getElementById('Price').value
+    var id = document.getElementById('Price').value
 
     var propInstance;
     App.contracts.addproperty.deployed().then(function(instance){
       propInstance = instance;
-      return propInstance.addingproperty(id, name, resultType, desc, address, resultCity, rent);
+      return propInstance.addingproperty(id, name, resultType, desc, address, resultCity);
      
     }); 
     console.log("Property added to blockchain..");

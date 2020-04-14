@@ -488,7 +488,7 @@ firebase.auth().signInWithEmailAndPassword(email , password).then( function(user
 firebase.database().ref('MEMBER').child(currentUser.uid).once('value').then(function(snapshot) {
 var userinfo = snapshot.val(); 
 var isOwner=userinfo['PropertyOwner'];
-alert(isOwner);
+
 
 
 if(isOwner){
