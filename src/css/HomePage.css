@@ -30,10 +30,15 @@ body {
    padding: 2%;
  }
  .sectionTitel{
-  margin-top: 120px;
-   color: grey;
+  margin-top: 50px;
+   color: #295069;
    text-align: center;  
-   font-family: 'Cairo', sans-serif;
+  font-style: italic;
+  font-family: 'Racing Sans One', cursive;
+  font-family: 'Yatra One', cursive;
+  font-family: 'Sirin Stencil', cursive;
+  font-family: 'Lalezar', cursive;
+  font-family: 'Fredoka One', cursive;
   font-weight: 900;
 }
 
@@ -372,8 +377,6 @@ font-size: 30px;
     border-radius: 10px;
   }
 
-
-
 .newForm3 h2{
     text-align: center;
     color: grey;
@@ -571,9 +574,7 @@ background: #eaeaea;
     margin-right: 550px;
       color: #64318D;
   margin-bottom: 30px;
-  font-family: 'Racing Sans One', cursive;
-font-family: 'Yatra One', cursive;
-font-family: 'Sirin Stencil', cursive;
+font-family: serif;
 }
 .searchBtn{
       margin-right: 500px;
