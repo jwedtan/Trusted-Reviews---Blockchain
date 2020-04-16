@@ -458,7 +458,21 @@ background: #eaeaea;
   background: #eaeaea;
   border-color: #eaeaea;
 }
-
+  #sign-out{
+  display: inline-block;
+  width: 84px;
+  height: 36px;
+  border-radius: 20px;
+  background: #eaeaea;
+  color: #300095;
+  text-align: center;  
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 5px;
+  margin-top: 15px;
+  border: 2px solid #fff;
+  transition: all .2s ease;
+ }
 
 
 	</style>
@@ -470,7 +484,10 @@ background: #eaeaea;
     <div class="header">
     <img src="media/logo.png" class="webLogo">
 <!-- //////////////////////////////////// -->
-    
+<div class="account">
+  
+  <button class="btn btn-secondary" id="#sign-out" onclick="logout()"><a >Sign Out</a></button>
+  </div>
 
        <!-- overlay closing tag -->
 
@@ -483,10 +500,7 @@ background: #eaeaea;
 
 <!----->
       <nav class="main-nav">
-        <div class="account">
-  
-          <button class="btn btn-secondary" id="#sign-out" onclick="logout()"><a >Sign Out</a></button>
-          </div>
+       
       <ul>
 
          <li><a href="index.html" style="color: grey; text-decoration: none;">Home</a></li>
