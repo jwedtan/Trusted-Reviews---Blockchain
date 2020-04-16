@@ -9,7 +9,8 @@
       <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
       <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-storage.js"></script>
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="css/HomePage.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.9.7/chartist.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.9.7/chartist.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -376,6 +377,35 @@ h5 {
 	color: black;
 }
 
+.btn {
+  text-decoration: none;
+  text-align: center;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  /* display: inline-block; */
+  margin: 12px 12px 12px 0px;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 3px 24px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 1s;
+  color:#300095; 
+  background-color: #eaeaea;
+  float: right;
+}
+.btn__submit {
+  width: 15%;
+  
+}
+
+.btn__submit:hover{
+  background-color:#eaeaea;
+}
+
 	</style>
 	<title>Dashboard</title>
 </head>
@@ -394,7 +424,7 @@ h5 {
         <h5> Manage your Account</h5>
 
          <thead>
-          <th>  <button onclick="editProfile()" style="margin-top: 10px; align:center; width: 10%; color:#300095; background: #eaeaea" >Edit</button> </th>
+          <th>  <button  class="btn btn__submit" onclick="editProfile()" >Edit</button> </th>
          </thead>
         
 
