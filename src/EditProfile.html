@@ -5,9 +5,9 @@
 
 
   <meta charset="utf-8">
-  <title>Edit Your Property</title>
+  <title>Edit Profile</title>
   <meta name="generator" content="Google Web Designer 7.1.1.1210">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link rel="stylesheet" href="css/materialize.min.css">
 
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
@@ -116,23 +116,15 @@
       margin: 0 auto;
 
     }
-  
+
+ 
   </style>
 </head>
 
 <body class="htmlNoPages">
  
 
-  <div class="header">
-    <img src="logo.png" style="width: 100px;height:100px;margin:20px"/>
-    <div class="nav">
-      <a href="HomePage2.html">Home</a>
-      <a href="HolidayHomes.html">Holiday Homes</a>
-      <a href="POregisteration.html">Owner Register</a>
-      <a href="Memberregisteration.html">Member Register</a>
-      <a href="Login.html">Sign In</a>
-    </div>
-  </div>
+  
  
   <div class="blueBoarder">
 
@@ -141,11 +133,11 @@
       <br>
       
       <div class="input-field">
-        <input class="input_fields materialize-textarea" id="FullName" type="text">
+        <input placeholder="Full Name"class="input_fields materialize-textarea" id="FullName" type="text">
         <label class="active" for="name"></label>
       </div>
       <div class="input-field">
-        <input class="input_fields" id="Email" type="text">
+        <input placeholder="Email"class="input_fields" id="Email" type="text">
         <label class="active" for="Description"></label>
       </div>
   
@@ -153,7 +145,7 @@
         <div class="btn"  style="color:#300095; background: #eaeaea" >
           <span>File</span>
           <img id="Image"/>
-          <input  type="file" placeholder="Upload Image" id="Picture" accept="Picture/*"  >
+          <input type="file" id="Picture"  placeholder="Upload Image" accept="Picture/*"  >
         </div>
        
       <div class="file-path-wrapper">
