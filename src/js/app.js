@@ -120,8 +120,11 @@ App = {
         return propInstance.addreview(id, review);
       }).then(function(result) {
         console.log("Reviewed");
-        console.log(result);
-        
+       console.log(result);
+
+      
+
+            
 
       });
       App.GetReviews(id);
