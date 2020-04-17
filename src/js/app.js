@@ -122,7 +122,9 @@ App = {
         console.log("Reviewed");
        console.log(result);
 
-      
+      var myReview = JSON.stringify(result);
+         alert(myReview);
+
 
             
 
@@ -190,9 +192,14 @@ App = {
       propInstance = instance;
       return propInstance.addingproperty(id, name, resultType, desc, address, resultCity);
      
+     
+
+
     }); 
     console.log("Property added to blockchain..");
     
+      
+
     
   },
 
