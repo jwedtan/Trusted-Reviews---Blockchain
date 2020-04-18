@@ -348,7 +348,6 @@ h4 {
   margin: 12px 12px 12px 0px;
   font-size: 16px;
   text-transform: uppercase;
-  padding: 3px 24px;
   cursor: pointer;
   font-weight: 500;
   transition: all 1s;
@@ -372,17 +371,7 @@ h4 {
 #viewbtn {
   padding-left: 20px;
 }
-#sign-out{
 
-  padding-top: 0px;
-  text-align: center;
-  
-}
-.btn-secondary{
-  padding-top: 0px;
-  margin-right: 170px;
-  
-}
 .main-header {
   width: 100%;
   border-bottom: 1px solid grey;
@@ -459,7 +448,6 @@ background: #eaeaea;
   border-color: #eaeaea;
 }
   #sign-out{
-  display: inline-block;
   width: 84px;
   height: 36px;
   border-radius: 20px;
@@ -468,11 +456,11 @@ background: #eaeaea;
   text-align: center;  
   font-size: 12px;
   font-weight: bold;
-  margin-left: 5px;
-  margin-top: 15px;
   border: 2px solid #fff;
   transition: all .2s ease;
+  margin-left: 600px;
  }
+
 
 
 	</style>
@@ -484,28 +472,16 @@ background: #eaeaea;
     <div class="header">
     <img src="media/logo.png" class="webLogo">
 <!-- //////////////////////////////////// -->
-<div class="account">
-  
-  <button class="btn btn-secondary" id="#sign-out" onclick="logout()"><a >Sign Out</a></button>
-  </div>
-
-       <!-- overlay closing tag -->
-
-       <!--Register-->
-      <!-- overlay closing tag -->
-
-
-  <!-- overlay closing tag -->
-     </div> <!-- Header closing tag -->
-
+</div>
 <!----->
       <nav class="main-nav">
        
       <ul>
-
          <li><a href="index.html" style="color: grey; text-decoration: none;">Home</a></li>
          <li><a href="HolidayHomes.html" style="color: grey; text-decoration: none;">Holiday Homes</a></li>
       </ul>
+          <button class="btn" id="sign-out" onclick="logout()">Sign Out</button>
+
       </nav>
       </header>
 
