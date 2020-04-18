@@ -5,9 +5,10 @@
 
 
   <meta charset="utf-8">
-  <title>Edit Your Property</title>
+  <title>Edit Profile</title>
   <meta name="generator" content="Google Web Designer 7.1.1.1210">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link rel="stylesheet" href="css/materialize.min.css">
+  <link rel="stylesheet" href="css/TopThreeReviews.css">
 
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
@@ -106,68 +107,72 @@
       margin: 5px;
       color:#000;
     }
-    .blueBoarder{
-      width: 75.7%;
-      min-height:100%;
-      border: 10px solid rgb(48, 0, 149);
-      border-radius: 15px ;
-      padding: 2%;
-      text-align: center;
-      margin: 0 auto;
-
-    }
   
+
+    .full-card2 {
+   margin: 0 auto;
+   display: flex;
+   justify-content: center;
+   /* align-items: stretch; */
+   padding: 60px;
+   /* height: 80vh; */
+   height: 80%;
+   background: white;
+   width: 90%;
+   /* max-width: 1300px; */
+   box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3), 0 85px 60px -25px rgba(0, 0, 0, 0.1);
+}
+#EditProf{
+  width: 70%;
+}
+#Editbtn{
+  margin-left: 40%;
+}
   </style>
 </head>
 
 <body class="htmlNoPages">
- 
 
-  <div class="header">
-    <img src="logo.png" style="width: 100px;height:100px;margin:20px"/>
-    <div class="nav">
-      <a href="HomePage2.html">Home</a>
-      <a href="HolidayHomes.html">Holiday Homes</a>
-      <a href="POregisteration.html">Owner Register</a>
-      <a href="Memberregisteration.html">Member Register</a>
-      <a href="Login.html">Sign In</a>
-    </div>
-  </div>
- 
-  <div class="blueBoarder">
+  <div class="full-card2 ">
 
-    <form id="shippingAddress"  enctype="multipart/form-data">
-      <div id="locationList"></div>
+    <form id="EditProf"  enctype="multipart/form-data">
+     
       <br>
       
       <div class="input-field">
-        <input class="input_fields materialize-textarea" id="FullName" type="text">
+        <input placeholder="Full Name"class="input_fields materialize-textarea" id="FullName" type="text">
         <label class="active" for="name"></label>
       </div>
+
       <div class="input-field">
-        <input class="input_fields" id="Email" type="text">
-        <label class="active" for="Description"></label>
+        <input placeholder="Email"class="input_fields" id="Email" type="text">
+        <label class="active" for="email"></label>
       </div>
   
+      <!--
       <div class="file-field input-field">
         <div class="btn"  style="color:#300095; background: #eaeaea" >
           <span>File</span>
           <img id="Image"/>
-          <input  type="file" placeholder="Upload Image" id="Picture" accept="Picture/*"  >
+          <input type="file" id="Picture"  placeholder="Upload Image" accept="Picture/*"  >
         </div>
+        -->
+        <div class="input-field">
+          <p class="input_fields" id="PropertyOwner" type="text">
+        </div>
+ 
+
        
       <div class="file-path-wrapper">
-        <input class="file-path validate" type="text" placeholder="">
-      </div>
-
+        <input placeholder="User Name" class="file-path validate" type="text" id="UserName">
       
     </div>
-    <button class="btn waves-effect waves-light"  style="color:#300095; background: #eaeaea"type="button" onclick="EditeProperty()"  id="Add" >Edit Profile</button>
+    <button class="btn waves-effect waves-light"  style="color:#300095; background: #eaeaea"type="button" onclick="EditeProfile()"  id="Editbtn" >Edit Profile</button>
+    </div>
   </form>
-
    </div>
 
-  </div>
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
    
  <!-- <input type="text" id="Picture" class="gwd-input-1ndl"required/> -->
@@ -187,37 +192,93 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     var uu = sessionStorage.getItem('userId22');
- 
-    var P_FullName;
-    var P_Email;
+
+  
     firebase.database().ref("MEMBER").child(uu).once('value').then(function (snapshot){
 
       P_FullName=snapshot.val().FullName;
-  
+      P_Email =snapshot.val().Email;
+      P_UserName =snapshot.val().Username;
+
+      P_PropertyOwner =snapshot.val().PropertyOwner;
+   
+
       document.getElementById("FullName").value=P_FullName;
+      document.getElementById("Email").value=P_Email;
+      document.getElementById("UserName").value=P_UserName;
+
+      
+      document.getElementById("PropertyOwner").value=P_PropertyOwner;
+
     });
-    
-   function EditeProperty() {
+
+   
+
+   function EditeProfile() {
 
       var FullNameN = document.getElementById("FullName").value;
+      var EmailN = document.getElementById("Email").value;
+      var UserNameN = document.getElementById("UserName").value;
 
-    if (FullName === "") {
+      var PropertyOwnerN =document.getElementById("PropertyOwner").value;
+
+    if (FullNameN === "") {
       window.alert('Name is Required!');
       return;
    } 
-
+   if (EmailN === "") {
+      window.alert('Email is Required!');
+      return;
+   } 
+   if (UserNameN === "") {
+      window.alert('User Name is Required!');
+      return;
+   } 
    
-      firebase.database().ref('MEMBER').child(uu).set({
-      
-        FullName: FullNameN,
 
+   /*
+   var Picture = document.getElementById("Picture").files[0];
+      
+      var PictureName = Picture.name;
+      var storageRef = firebase.storage().ref('images/' + PictureName);
+      var uploadTask = storageRef.put(Picture);
+      var downURL;
+      uploadTask.on('state_changed', function(snapshot) {
+  
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log("upload is " + progress + "done")
+  
+      },function(error) {
+        //here error
+        console.log(error.message);
+  
+      }, function() {
+        //here successful
+        uploadTask.snapshot.ref.getDownloadURL().then(function(downlaodURL) {
+          // get upload pic here
+          downURL=downlaodURL;
+          console.log(downlaodURL);
+        });
+      });  
+      */
+
+    
+      firebase.database().ref('MEMBER').child(uu).set({
+          Email: EmailN,
+          FullName: FullNameN,
+          MID:uu,
+          Username: UserNameN,
+          PropertyOwner: PropertyOwnerN
+
+          
      }).then(function(){
       alert('Edited Successfully');
       location.reload();
       return false;
-
     });
-    
+     
+
+
 } 
   </script>
 

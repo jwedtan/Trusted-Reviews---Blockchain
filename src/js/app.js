@@ -120,8 +120,13 @@ App = {
         return propInstance.addreview(id, review);
       }).then(function(result) {
         console.log("Reviewed");
-        console.log(result);
-        
+       console.log(result);
+
+      var myReview = JSON.stringify(result);
+         alert(myReview);
+
+
+            
 
       });
       App.GetReviews(id);
@@ -187,9 +192,14 @@ App = {
       propInstance = instance;
       return propInstance.addingproperty(id, name, resultType, desc, address, resultCity);
      
+     
+
+
     }); 
     console.log("Property added to blockchain..");
     
+      
+
     
   },
 

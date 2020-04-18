@@ -13,6 +13,7 @@
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-storage.js"></script>
+  <link rel="stylesheet" href="css/TopThreeReviews.css">
 
   <style type="text/css"> 
 
@@ -21,66 +22,25 @@
       max-width: 800px;
     }
     
-    #map {
-      height: 50vh;
-      margin-bottom: 10px;
-      display: none;
-    }
+ 
     
     #locationList .card {
       padding: 10px;
     }
     
-    #toast-container {
-      top: 50%;
-      bottom: unset;
-    }
-    
-    .toast {
-      background-color: rgba(0, 0, 0, 0.8);
-    }
+   
     
     @media only screen and (max-width: 768px) {
       .container {
         width: 80%;
       }
     }
-    .main-header {
-      width: 100%;
-      border-bottom: 1px solid grey;
-      position: absolute;
-      top: 0;
-    }
-    .nav-wrapper{
-    
-      width: 100%;
-      border-bottom: 1px solid grey;
-      position: absolute;
-      top: 0;
-      background-color: #eaeaea;
-    }
-    
-    .nav-mobile{
-     width: 100%;
-      border-bottom: 1px solid grey;
-      position: absolute;
-      top: 0;
-      background-color: #eaeaea;
-    }
     
     
 
       </style>
   <style>
-    #map1{
-      position: absolute;
-      margin: 5%;
-      top: 1004px;
-      width: 40%;
-      height: 55%;
-      
-
-    }
+  
     #map{
      display: block;
       margin: 3% auto;
@@ -106,16 +66,28 @@
       margin: 5px;
       color:#000;
     }
-    .blueBoarder{
-      width: 75.7%;
-      min-height:100%;
-      border: 10px solid rgb(48, 0, 149);
-      border-radius: 15px ;
-      padding: 2%;
-      text-align: center;
-      margin: 0 auto;
+  
 
-    }
+
+    .full-card2 {
+   margin: 0 auto;
+   display: flex;
+   justify-content: center;
+   /* align-items: stretch; */
+   padding: 60px;
+   /* height: 80vh; */
+   height: 80%;
+   background: white;
+   width: 90%;
+   /* max-width: 1300px; */
+   box-shadow: 0 15px 20px -15px rgba(0, 0, 0, 0.3), 0 55px 50px -35px rgba(0, 0, 0, 0.3), 0 85px 60px -25px rgba(0, 0, 0, 0.1);
+}
+#EditProp{
+  width: 70%;
+}
+#Editbtn{
+  margin-left: 40%;
+}
   
   </style>
 </head>
@@ -123,33 +95,22 @@
 <body class="htmlNoPages">
  
 
-  <div class="header">
-    <img src="logo.png" style="width: 100px;height:100px;margin:20px"/>
-    <div class="nav">
-      <a href="HomePage2.html">Home</a>
-      <a href="HolidayHomes.html">Holiday Homes</a>
-      <a href="POregisteration.html">Owner Register</a>
-      <a href="Memberregisteration.html">Member Register</a>
-      <a href="Login.html">Sign In</a>
-    </div>
-  </div>
- 
-  <div class="blueBoarder">
+  <div class="full-card2">
 
-    <form id="shippingAddress"  enctype="multipart/form-data">
-      <div id="locationList"></div>
+    <form id="EditProp"  enctype="multipart/form-data">
+     
       <br>
       
       <div class="input-field">
-        <input class="input_fields materialize-textarea" id="Name" type="text">
+        <input placeholder="Property Name" class="input_fields materialize-textarea" id="Name" type="text">
         <label class="active" for="name"></label>
       </div>
       <div class="input-field">
-        <input class="input_fields" id="Des" type="text">
+        <input  placeholder="Property Description" class="input_fields" id="Des" type="text">
         <label class="active" for="Description"></label>
       </div>
       <div class="input-field">
-        <input class="input_fields" id="Address" type="text">
+        <input   placeholder="Address" class="input_fields" id="Address" type="text">
         <label class="active" for="address"></label>
       </div>
       <div class="input-field col s12">
@@ -184,11 +145,11 @@
 
    
       <div class="input-field">
-        <input class="input_fields" id="Price" type="number">
+        <input  placeholder="Price" class="input_fields" id="Price" type="number">
         <label class="active" for="Price"></label>
       </div>
       <div class="input-field">
-        <input class="input_fields" id="OtherInformation" type="text">
+        <input  placeholder="Other OtherInformation" class="input_fields" id="OtherInformation" type="text">
         <label class="active" for="OtherInformation"></label>
       </div>
    
@@ -208,7 +169,7 @@
         </div>
     </div>
     <div id="map"></div>
-    <button class="btn waves-effect waves-light"  style="color:#300095; background: #eaeaea"type="button" onclick="EditeProperty()"  id="Add" >Save</button>
+    <button class="btn waves-effect waves-light"  style="color:#300095; background: #eaeaea"type="button" onclick="EditeProperty()"  id="Editbtn" >Edit Property</button>
     
   </form>
 
