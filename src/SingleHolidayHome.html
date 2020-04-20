@@ -460,9 +460,14 @@ function handleAddRev(){
           firebase.database().ref("Reviews").child(Review.key).child('Dislike').once('value').then(function (dlikesnapshot){
             
             firebase.database().ref("MEMBER").child(Reviewerid).once('value').then(function(Reviewer){
-             var ReviewerName= Reviewer.val().FullName;
+              var ReviewerName= Reviewer.val().FullName;
              var ReviewerImage= Reviewer.val().ProfileImage;
-         
+             var ReviewerThiqa=0;
+             if(Reviewer.val().Thiqa!=null)
+             {
+              var ReviewerThiqa=Reviewer.val().Thiqa;
+             }
+            
              var numberOfReviews;
              firebase.database().ref("Reviews").orderByChild('UID').equalTo(Reviewerid).once('value').then(function(r){
               numberOfReviews=r.numChildren();
@@ -471,6 +476,7 @@ function handleAddRev(){
               document.getElementById('review').innerHTML+=
           '<div class="comment__header>"'+'<a class="comment__author" id="author-c-1" style="font-size:25px;" >'+ReviewerName+'</a>'
          + '<span class="comment__reviews"> Reviews: '+numberOfReviews+'</span></div>'
+         +'<span class="comment__reviews"> Thiqah: '+ReviewerThiqa+'</span></div>'
           +'<div class="comment__rate">'+ReviewRate+
             ' Stars<div class="comment__text">'+ReviewTxt+'</div>'+
             
@@ -526,9 +532,11 @@ function handleAddRev(){
     Dislike:{'defult':0},
   }).then(function (){
     alert("Review added successfully");
-    starmark2(0);
+
     getReviews();
+ 
     document.getElementById('RText').value=" ";
+    starmark2();
    
   });
   }else{
@@ -553,15 +561,12 @@ function handleAddRev(){
       }
     }
   }
-  function starmark2(i)
+  function starmark2()
   {
-    if(i<count)
-      {
-        document.getElementById((i+1)+subid).style.color="orange";
-      }else
-      {
-        document.getElementById((i+1)+subid).style.color="black";
-      }
+    for(var i=0;i<5;i++){
+      document.getElementById((i+1)+"one").style.color="black";
+
+    }
   }
    
  function addLike(RID)
@@ -590,7 +595,39 @@ function handleAddRev(){
             firebase.database().ref("Reviews").child(RID).once('value').then(function (rev){
               reviewOwnerID=rev.val().UID;
               firebase.database().ref("MEMBER").child(uu).child('FullName').once('value').then(function (name){
-                firebase.database().ref("Notification").push().set({UID:reviewOwnerID,Txt:name.val()+' Liked your Review'});
+                firebase.database().ref("Notification").push().set({UID:reviewOwnerID,Txt:name.val()+' Liked your Review'}).then(function (){
+                  firebase.database().ref("Reviews").orderByChild("UID").equalTo(reviewOwnerID).once("value").then(function (revList1){
+                    var totalLike=0;
+                    var totalDislike=0;
+                    var ii=0
+                    revList1.forEach(function(rev1){
+                      firebase.database().ref("Reviews").child(rev1.key).child('Like').once('value').then(function (likesnapshot1){
+         
+                        firebase.database().ref("Reviews").child(rev1.key).child('Dislike').once('value').then(function (dlikesnapshot1){
+                          totalLike+=likesnapshot1.numChildren()-1
+                          totalDislike+=dlikesnapshot1.numChildren()-1
+                          ii++;
+                          if(ii===revList1.numChildren())
+                          {
+                            
+                            if(totalLike/(totalDislike+1)*2 >4)
+                            {
+                              alert(totalLike);
+                              alert(totalDislike);
+                              firebase.database().ref("MEMBER").child(reviewOwnerID).child('Thiqa').once("value").then(function (thiqaSnap){
+                                var thiqa=thiqaSnap.val();
+                                thiqa++;
+                                firebase.database().ref("MEMBER").child(reviewOwnerID).child('Thiqa').set(thiqa);
+                              });
+                            }
+                          }
+                        });
+                      });
+                          
+                    });
+                  });
+
+                });
                 document.getElementById('review').innerHTML='';
                 getReviews();
               });

@@ -414,7 +414,6 @@ h5 {
   <div class="wrapper">
 
 
-  
 
     <div class="content-wrapper">
       <div class="content">
@@ -473,10 +472,11 @@ h5 {
             appId: "1:662663714362:web:1842f051b9bddf5f48c703",
             measurementId: "G-QDZ39S220R"
           };
+          var numberOfReviews=0;
           // Initialize Firebase
           firebase.initializeApp(firebaseConfig);
           var uu = sessionStorage.getItem('userId22');
-          
+        
        
         firebase.database().ref("Notification").orderByChild('UID').equalTo(uu).limitToLast(2).once('value').then(function (snapshot){
        if(snapshot.val()!=null)
@@ -503,11 +503,19 @@ h5 {
         firebase.database().ref("MEMBER").child(uu).once('value').then(function (snapshot){
             var userName= snapshot.val().FullName;
             var emaill= snapshot.val().Email;
+            var thiqaah= snapshot.val().Thiqa;
             
+            firebase.database().ref("Reviews").orderByChild('UID').equalTo(uu).once('value').then(function(r){
+              numberOfReviews=r.numChildren();
+           
+             
+          
 
             document.getElementById("profile-card").innerHTML+=
             
          '<h1 class="profile-name">'+userName+'</h1>'+
+         '<h1 class="profile-name">'+thiqaah+' thiqah </h1>'+
+         '<h1 class="profile-name">'+numberOfReviews+' reveiws </h1>'+
          '<p class="profile-description"> Member </p> </div>';
 
 
@@ -516,7 +524,9 @@ h5 {
 
           //   alert(userName)
           //  alert(emaill)
+        });
             }
+            
             );
      
    function editProfile(){
