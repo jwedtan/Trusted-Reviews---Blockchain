@@ -10,8 +10,11 @@
     <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-storage.js"></script>
     <script src="https://use.fontawesome.com/fe459689b4.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+ <!-- Blockchain connection -->
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
 
-   
 <style type="text/css">
 
 body {
@@ -367,7 +370,7 @@ span {
                         placeholder="Share your review.."/>
                    
 
-                <button type ="submit" class="btn btn__submit" onclick="addReview()">leave a review</button>
+                <button type ="submit" class="btn btn__submit" onclick="handleAddRev()">leave a review</button>
            
 
         </div>
@@ -380,6 +383,11 @@ span {
 
 
 <script>
+
+function handleAddRev(){
+    addReview();
+    App.AddReview();
+  }
  var firebaseConfig = {
       apiKey: "AIzaSyBVKHsqnVyaPbvPmgzPqEK_9p2Hm4ZucYc",
       authDomain: "trusted2020-8c803.firebaseapp.com",
@@ -414,12 +422,8 @@ span {
             document.getElementById('propName').innerText=property.val().PropertyName;
             document.getElementById('product-img').src=property.val().Image;
             document.getElementById('desc').innerText=property.val().Description;
-          
-            //
-            document.getElementById('txtReviewsCount').innerText=reviewCount+" Reviws";
                   document.getElementById('txtRate').innerHTML=pRate0+" Stars";
-                  document.getElementById('location').innerHTML+=
-                  '<span  class="fa fa-map-marker icon" onclick="SClick(\'https://maps.google.com/?q='+property.val().Location['lat']+','+property.val().Location['lng']+'\')"></span>';
+                  
               }
               reviewCount=reviewSnap.numChildren();
               reviewSnap.forEach(function(rev){
@@ -428,15 +432,12 @@ span {
                 if(i===reviewCount)
                 {
                   pRate0=Number((pRate0/reviewCount).toFixed(2));
-                  
-                  property.val().Location['lat']
+
                   document.getElementById('propName').innerText=property.val().PropertyName;
                   document.getElementById('product-img').src=property.val().Image;
                   document.getElementById('desc').innerText=property.val().Description;
-                  document.getElementById('txtReviewsCount').innerText=reviewCount+" Reviws";
                   document.getElementById('txtRate').innerText=pRate0+" Stars";
-                  document.getElementById('location').innerHTML+=
-                  '<span  class="fa fa-map-marker icon" onclick="SClick(\'https://maps.google.com/?q='+property.val().Location['lat']+','+property.val().Location['lng']+'\')"></span>';
+                  
                 }
               });
             });

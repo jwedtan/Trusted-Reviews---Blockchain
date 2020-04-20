@@ -414,12 +414,8 @@ span {
             document.getElementById('propName').innerText=property.val().PropertyName;
             document.getElementById('product-img').src=property.val().Image;
             document.getElementById('desc').innerText=property.val().Description;
-          
-            //
             document.getElementById('txtReviewsCount').innerText=reviewCount+" Reviws";
                   document.getElementById('txtRate').innerHTML=pRate0+" Stars";
-                  document.getElementById('location').innerHTML+=
-                  '<span  class="fa fa-map-marker icon" onclick="SClick(\'https://maps.google.com/?q='+property.val().Location['lat']+','+property.val().Location['lng']+'\')"></span>';
               }
               reviewCount=reviewSnap.numChildren();
               reviewSnap.forEach(function(rev){
@@ -429,14 +425,12 @@ span {
                 {
                   pRate0=Number((pRate0/reviewCount).toFixed(2));
                   
-                  property.val().Location['lat']
+               
                   document.getElementById('propName').innerText=property.val().PropertyName;
                   document.getElementById('product-img').src=property.val().Image;
                   document.getElementById('desc').innerText=property.val().Description;
-                  document.getElementById('txtReviewsCount').innerText=reviewCount+" Reviws";
                   document.getElementById('txtRate').innerText=pRate0+" Stars";
-                  document.getElementById('location').innerHTML+=
-                  '<span  class="fa fa-map-marker icon" onclick="SClick(\'https://maps.google.com/?q='+property.val().Location['lat']+','+property.val().Location['lng']+'\')"></span>';
+                 
                 }
               });
             });
