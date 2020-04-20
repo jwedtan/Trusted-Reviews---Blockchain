@@ -48,7 +48,8 @@ input:-ms-input-placeholder {
 }
 
 .comments {
-  margin: 20%;
+  margin-top: 10%;
+  margin-left: 20%;
 }
 
 .threader {
@@ -68,7 +69,7 @@ input:-ms-input-placeholder {
   overflow: hidden;
   min-height: 25px;
   width: 60%;
-  margin-bottom: 8px;
+
 }
 .comment__body, .comment__reply {
   width: 96%;
@@ -86,6 +87,7 @@ input:-ms-input-placeholder {
   margin-left: 12px;
   font-size: 15px;
   font-weight: lighter;
+
 }
 .comment__reviews{
   font-size: 20px;
@@ -106,6 +108,12 @@ input:-ms-input-placeholder {
   margin-top: 18px;
   background-color:#D6EAF8;
   min-width: 100%;
+
+}
+.comment__rate{
+font-size: 20px;
+font-weight: 400;
+margin-left: 3%;
 }
 .comment__text:before {
   content: '';
@@ -150,10 +158,7 @@ input:-ms-input-placeholder {
     
   }
    
-  .checked{
-    color: orange;
-    
-  }
+ 
 
 .btn {
   text-decoration: none;
@@ -228,17 +233,17 @@ input:-ms-input-placeholder {
   box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
 }
 
-.product-img {
+.property-img {
   float: left;
   height: 420px;
   width: 327px;
 }
 
-.product-img img {
+.property-img img {
   border-radius: 7px 0 0 7px;
 }
 
-.product-info {
+.property-info {
   float: left;
   height: 420px;
   width: 327px;
@@ -246,27 +251,27 @@ input:-ms-input-placeholder {
   background-color: #ffffff;
 }
 
-.product-text {
+.property-text {
   height: 300px;
   width: 327px;
   text-align: center;
 }
 
-.product-text h1 {
+.property-text h1 {
   margin: 0 0 0 38px;
   padding-top: 52px;
   font-size: 34px;
   color: #474747;
 }
 
-.product-text h1,
-.product-price-btn p {
+.property-text h1,
+.property-price-btn p {
   font-family: 'Bentham', serif;
   text-align: center;
   
 }
 
-.product-text h2 {
+.property-text h2 {
   margin: 0 0 47px 38px;
   font-size: 13px;
   font-family: 'Raleway', sans-serif;
@@ -276,7 +281,7 @@ input:-ms-input-placeholder {
   letter-spacing: 0.2em;
 }
 
-.product-text p {
+.property-text p {
   height: 125px;
   margin: 0 0 0 38px;
   font-family: 'Playfair Display', serif;
@@ -297,17 +302,8 @@ span {
 }
 
 
-.btn:focus {
-  outline: none;
-}
 
-.green{
-  color: green;
-}
 
-.red{
-  color: red;
-}
 
 </style>
 </head>
@@ -317,11 +313,11 @@ span {
 
     <div class="wrapper">
 
-        <div class="product-img">
-          <img id="product-img"src="" height="420" width="327">
+        <div class="property-img">
+          <img id="property-img"src="" height="420" width="327">
         </div>
-        <div class="product-info">
-          <div class="product-text">
+        <div class="property-info">
+          <div class="property-text">
             <h1 id="propName"></h1>
           </br> </br>
             <p id="desc"> </p>
@@ -346,32 +342,7 @@ span {
    
     
 </div>
-    </div>
-</div>
-    <div class="heading">How was your experience?</div>
-    <div class="threader">
-        <div class="comment-submit">
-          <P style="margin-right: 2%;">Rate</P> 
-          <div class="row2">
-          <span class=" fa fa-star "  onclick="starmark(this)" id="1one" style="font-size: 30px;cursor:pointer" ></span>
-          <span class=" fa fa-star "  onclick="starmark(this)" id="2one" style="font-size: 30px;cursor:pointer" ></span>
-          <span class=" fa fa-star "  onclick="starmark(this)" id="3one" style="font-size: 30px;cursor:pointer" ></span>
-          <span class=" fa fa-star "  onclick="starmark(this)" id="4one" style="font-size: 30px;cursor:pointer" ></span>
-          <span class=" fa fa-star "  onclick="starmark(this)" id="5one" style="font-size: 30px;cursor:pointer" ></span>
-        </div>
-                <input
-                        type="text"
-                        id="RText"
-                        name="comment"
-                        class="form-input"
-                        placeholder="Share your review.."/>
-                   
-
-                <button type ="submit" class="btn btn__submit" onclick="addReview()">leave a review</button>
-           
-
-        </div>
-    </div>
+ 
 
 
 </body>
@@ -412,10 +383,9 @@ span {
             
             
             document.getElementById('propName').innerText=property.val().PropertyName;
-            document.getElementById('product-img').src=property.val().Image;
+            document.getElementById('property-img').src=property.val().Image;
             document.getElementById('desc').innerText=property.val().Description;
-            document.getElementById('txtReviewsCount').innerText=reviewCount+" Reviws";
-                  document.getElementById('txtRate').innerHTML=pRate0+" Stars";
+            document.getElementById('txtRate').innerHTML=pRate0+" Stars";
               }
               reviewCount=reviewSnap.numChildren();
               reviewSnap.forEach(function(rev){
@@ -427,7 +397,7 @@ span {
                   
                
                   document.getElementById('propName').innerText=property.val().PropertyName;
-                  document.getElementById('product-img').src=property.val().Image;
+                  document.getElementById('property-img').src=property.val().Image;
                   document.getElementById('desc').innerText=property.val().Description;
                   document.getElementById('txtRate').innerText=pRate0+" Stars";
                  
@@ -466,19 +436,12 @@ span {
               document.getElementById('review').innerHTML+=
           '<div class="comment__header>"'+'<a class="comment__author" id="author-c-1" style="font-size:25px;" >'+ReviewerName+'</a>'
          + '<span class="comment__reviews"> Reviews: '+numberOfReviews+'</span></div>'
-          +'<div class="comment__text">'+ReviewTxt+
-            +'<div class="comment__text">'+ReviewRate+'</p></div>'+
+          +'<div class="comment__rate">'+ReviewRate+
+            ' Stars<div class="comment__text">'+ReviewTxt+'</div>'+
             
-          '<p class="comment__date" style="float: right;">'+ReviewDate+'</p></div>'+
-          '<div class="comment__footer">'+'<button class="btn" id="green" onclick="addLike(\''+Review.key+'\')">'+ReviewLike +' <i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i></button>'+
-          '<button class="btn" id="red" onclick="addDislike(\''+Review.key+'\')">'+ReviewDislike+' <i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i></button>'
-          
-          
-          
-          
-          +'</div>';
-
-    
+            
+          '<p class="comment__date" style="float: right;">'+ReviewDate+'</p></div>';
+   
              });
             });
 
@@ -496,162 +459,6 @@ span {
    }
 
 
-   function addReview(){
-  var url_string = window.location.href; //window.location.href
-  var url = new URL(url_string);
-  var PID1 = url.searchParams.get("p");
-  
-  if(PID1!=null){
-    var userid=uu;
-  var rate=rating
-  var ReviewText=document.getElementById('RText').value;
-
-  var today = new Date();
-  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  var dateTime = date+' '+time;
-  var RDateTime= dateTime;
-  firebase.database().ref("Reviews").push().set({
-    DateTime:RDateTime,
-    PID:PID1,
-    Txt:ReviewText,
-    UID:userid,
-    Rate:rate,
-    Like:{'defult':0},
-    Dislike:{'defult':0},
-  }).then(function (){
-    alert("Review added successfully");
-    starmark2(0);
-    getReviews();
-    document.getElementById('RText').value=" ";
    
-  });
-  }else{
-    alert("Error");
-  }
-  
- }
-  
- function starmark(item)
-  {
-    var count=item.id[0];
-    rating=count;
-    var subid=item.id.substring(1);
-    for(var i=0;i<5;i++)
-    {
-      if(i<count)
-      {
-        document.getElementById((i+1)+subid).style.color="orange";
-      }else
-      {
-        document.getElementById((i+1)+subid).style.color="black";
-      }
-    }
-  }
-  function starmark2(i)
-  {
-    if(i<count)
-      {
-        document.getElementById((i+1)+subid).style.color="orange";
-      }else
-      {
-        document.getElementById((i+1)+subid).style.color="black";
-      }
-  }
-   
- function addLike(RID)
-{
-  var uu = sessionStorage.getItem('userId22');
-  if(uu===null)
-  {
-    window.location ="Login.html";
-  }else
-  {
-    firebase.database().ref("Reviews").child(RID).child('UID').once('value').then(function (uidsnap){
-      if(uu!=uidsnap.val())
-      {
-        firebase.database().ref("Reviews").child(RID).child('Dislike').child(uu).once('value').then(function (RDLsnap){
-          isthereDislike=RDLsnap.val();
-          if(isthereDislike!=null)
-          {
-            firebase.database().ref("Reviews").child(RID).child('Dislike').child(uu).remove();
-          }
-        });
-        firebase.database().ref("Reviews").child(RID).child('Like').child(uu).once('value').then(function (RLsnap){
-         var isthereLike= RLsnap.val();
-          if(isthereLike===null)
-          {
-            firebase.database().ref("Reviews").child(RID).child('Like').child(uu).set(1);
-            firebase.database().ref("Reviews").child(RID).once('value').then(function (rev){
-              reviewOwnerID=rev.val().UID;
-              firebase.database().ref("MEMBER").child(uu).child('FullName').once('value').then(function (name){
-                firebase.database().ref("Notification").push().set({UID:reviewOwnerID,Txt:name.val()+' Liked your Review'});
-                document.getElementById('review').innerHTML='';
-                getReviews();
-              });
-            });
-           
-          }else
-          {
-            alert("You liked this Review already !");
-          }
-        });
-      }else
-      {
-        alert("Can't  Like your self !");
-      }
-    });
-    
-  }
-}
-
-function addDislike(RID)
-{
-  var uu = sessionStorage.getItem('userId22');
-  if(uu===null)
-  {
-    window.location ="Login.html";
-  }
-  else
-  {
-    firebase.database().ref("Reviews").child(RID).child('UID').once('value').then(function (uidsnap){
-      
-      if(uu!=uidsnap.val())
-      {
-        firebase.database().ref("Reviews").child(RID).child('Like').child(uu).once('value').then(function (RLsnap){
-          isthereLike=RLsnap.val();
-          
-          if(isthereLike!=null)
-          {
-            firebase.database().ref("Reviews").child(RID).child('Like').child(uu).remove();
-          }
-        });
-        firebase.database().ref("Reviews").child(RID).child('Dislike').child(uu).once('value').then(function (RDLsnap){
-         var isthereDislike= RDLsnap.val();
-          if(isthereDislike===null)
-          {
-            firebase.database().ref("Reviews").child(RID).child('Dislike').child(uu).set(1);
-            firebase.database().ref("Reviews").child(RID).once('value').then(function (rev){
-              reviewOwnerID=rev.val().UID;
-               firebase.database().ref("MEMBER").child(uu).child('FullName').once('value').then(function (name){
-                firebase.database().ref("Notification").push().set({UID:reviewOwnerID,Txt:name.val()+' Disliked your Review'});
-                document.getElementById('review').innerHTML='';
-                getReviews();
-              });
-              
-            });
-          }else
-          {
-            alert("You disliked this Review already !")
-          }
-        });
-      }else
-      {
-        alert("Can't  Dislike your self !")
-      }
-    });
-    
-  }
-}
 </script>
 </html>

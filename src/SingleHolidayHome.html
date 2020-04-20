@@ -49,9 +49,9 @@ input::-moz-placeholder,
 input:-ms-input-placeholder {
   color: rgba(40, 53, 51, 0.5);
 }
-
 .comments {
-  margin: 20%;
+  margin-top: 10%;
+  margin-left: 20%;
 }
 
 .threader {
@@ -109,6 +109,11 @@ input:-ms-input-placeholder {
   margin-top: 18px;
   background-color:#D6EAF8;
   min-width: 100%;
+}
+.comment__rate{
+font-size: 20px;
+font-weight: 400;
+margin-left: 3%;
 }
 .comment__text:before {
   content: '';
@@ -231,17 +236,17 @@ input:-ms-input-placeholder {
   box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
 }
 
-.product-img {
+.property-img {
   float: left;
   height: 420px;
   width: 327px;
 }
 
-.product-img img {
+.property-img img {
   border-radius: 7px 0 0 7px;
 }
 
-.product-info {
+.property-info {
   float: left;
   height: 420px;
   width: 327px;
@@ -249,27 +254,27 @@ input:-ms-input-placeholder {
   background-color: #ffffff;
 }
 
-.product-text {
+.property-text {
   height: 300px;
   width: 327px;
   text-align: center;
 }
 
-.product-text h1 {
+.property-text h1 {
   margin: 0 0 0 38px;
   padding-top: 52px;
   font-size: 34px;
   color: #474747;
 }
 
-.product-text h1,
-.product-price-btn p {
+.property-text h1,
+.property-price-btn p {
   font-family: 'Bentham', serif;
   text-align: center;
   
 }
 
-.product-text h2 {
+.property-text h2 {
   margin: 0 0 47px 38px;
   font-size: 13px;
   font-family: 'Raleway', sans-serif;
@@ -279,7 +284,7 @@ input:-ms-input-placeholder {
   letter-spacing: 0.2em;
 }
 
-.product-text p {
+.property-text p {
   height: 125px;
   margin: 0 0 0 38px;
   font-family: 'Playfair Display', serif;
@@ -304,13 +309,6 @@ span {
   outline: none;
 }
 
-.green{
-  color: green;
-}
-
-.red{
-  color: red;
-}
 
 </style>
 </head>
@@ -320,11 +318,11 @@ span {
 
     <div class="wrapper">
 
-        <div class="product-img">
-          <img id="product-img"src="" height="420" width="327">
+        <div class="property-img">
+          <img id="property-img"src="" height="420" width="327">
         </div>
-        <div class="product-info">
-          <div class="product-text">
+        <div class="property-info">
+          <div class="property-text">
             <h1 id="propName"></h1>
           </br> </br>
             <p id="desc"> </p>
@@ -420,7 +418,7 @@ function handleAddRev(){
             
             
             document.getElementById('propName').innerText=property.val().PropertyName;
-            document.getElementById('product-img').src=property.val().Image;
+            document.getElementById('property-img').src=property.val().Image;
             document.getElementById('desc').innerText=property.val().Description;
                   document.getElementById('txtRate').innerHTML=pRate0+" Stars";
                   
@@ -434,7 +432,7 @@ function handleAddRev(){
                   pRate0=Number((pRate0/reviewCount).toFixed(2));
 
                   document.getElementById('propName').innerText=property.val().PropertyName;
-                  document.getElementById('product-img').src=property.val().Image;
+                  document.getElementById('property-img').src=property.val().Image;
                   document.getElementById('desc').innerText=property.val().Description;
                   document.getElementById('txtRate').innerText=pRate0+" Stars";
                   
@@ -473,12 +471,12 @@ function handleAddRev(){
               document.getElementById('review').innerHTML+=
           '<div class="comment__header>"'+'<a class="comment__author" id="author-c-1" style="font-size:25px;" >'+ReviewerName+'</a>'
          + '<span class="comment__reviews"> Reviews: '+numberOfReviews+'</span></div>'
-          +'<div class="comment__text">'+ReviewTxt+
-            +'<div class="comment__text">'+ReviewRate+'</p></div>'+
+          +'<div class="comment__rate">'+ReviewRate+
+            ' Stars<div class="comment__text">'+ReviewTxt+'</div>'+
             
           '<p class="comment__date" style="float: right;">'+ReviewDate+'</p></div>'+
-          '<div class="comment__footer">'+'<button class="btn" id="green" onclick="addLike(\''+Review.key+'\')">'+ReviewLike +' <i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i></button>'+
-          '<button class="btn" id="red" onclick="addDislike(\''+Review.key+'\')">'+ReviewDislike+' <i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i></button>'
+          '<div class="comment__footer">'+'<button style="margin-bottom:3%" class="btn" id="green" onclick="addLike(\''+Review.key+'\')">'+ReviewLike +' <i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i></button>'+
+          '<button style="margin-bottom:3%" class="btn" id="red" onclick="addDislike(\''+Review.key+'\')">'+ReviewDislike+' <i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i></button>'
           
           
           
