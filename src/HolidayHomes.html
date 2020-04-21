@@ -2,6 +2,7 @@
 <html>
     <head>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <title>Holiday homes</title>
 
       <script src="https://www.gstatic.com/firebasejs/5.5.6/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
@@ -207,21 +208,17 @@ display: inline-block;
 
 
     <body>
-             <header class="main-header">
-       <div class="header">
-       <img src="media/logo.png" class="webLogo">
-    <nav class="main-nav">
-         <ul>
-            <li id="navPropertyOwner" style="display: none;"><a href="propertyOwnerDashboard.html"> Maneg Properties</a></li>
-            <li><a href="HolidayHomes.html" style="color: grey; text-decoration: none;"> Holiday Homes</a></li>
-            <li><a href="Login.html" style="color: grey; text-decoration: none;">Sign In</a></li>
-            <li><a  href="MemberDashboard.html" style="color: grey; text-decoration: none;"> profile</a></li>
-            <li><a  href="Memberregisteration.html" style="color: grey; text-decoration: none;"> register</a></li>
-            <li><a id="signin" href="Login.html">Sign In</a></li>
-            <li><a id="signout" href="#" onclick="logout()">Sign Out</a></li>
-         </ul>
-         </nav>
-         </header>
+              <header class="main-header">
+    <div class="header">
+    <img src="media/logo.png" class="webLogo">
+      </div>
+      <nav class="main-nav">
+      <ul>
+         <li><a href="index.html" style="color: grey; text-decoration: none;">Home</a></li>
+         <li><a href="HolidayHomes.html" style="color: grey; text-decoration: none;">Holiday Homes</a></li>
+      </ul>
+      </nav>
+      </header>
 
 
        </br>
@@ -529,11 +526,6 @@ function redirect (propertyID)
 {
   window.location.href="SingleHolidayHome.html?p="+propertyID;
 }
-function logout()
-         {
-          sessionStorage.removeItem('userId22');
-          window.location.href = "HomePage2.html"
-         }
 
 
 </script>

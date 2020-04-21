@@ -13,7 +13,6 @@
   <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-storage.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/HomePage.css">
-
 <link rel="stylesheet" type="text/css" href="css/footer.css">
 <link rel="stylesheet" type="text/css" href="css/features.css">
 <link rel="stylesheet" type="text/css" href="css/TopthreeReviews.css">
@@ -25,6 +24,8 @@
 <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
 <link rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
 <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Lalezar|Racing+Sans+One|Sirin+Stencil|Yatra+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
@@ -42,12 +43,15 @@
         <button class="btn btn-secondary" id="sign-upP" onclick="toggleSignUpP()"><a>Sign Up as a Property owner</a></button>
         <button class="btn btn-secondary" id="sign-upM" onclick="toggleSignUpM()"><a>Sign Up as a Member</a></button>
         <button class="btn btn-secondary" id="sign-in" onclick="toggleLogin()"><a >Sign in</a></button>
+         <button class="btn btn-secondary" id="sign-out" onclick="logout()">Sign out</button>
         </div>
 
+
+
          <div class="overlay">
-         <div class="login">
+         <div class="login4">
          <div class="header2">
-           <h2>Sign in</h2>
+           <h1 id="POLabel">Sign in</h1>
            <i class="fas fa-times" onclick="toggleLogin()"></i>
          </div>
      
@@ -56,7 +60,7 @@
             <input type="text" id="LEmail" placeholder="Enter your Email" />
             <input type="password"  id="LPassword" placeholder="Enter your Password"/>
             <div class="loginbutton">
-          <button onclick="Login()">Login</button>
+          <button onclick="Login()">sign in</button>
           </br>
           </br>
           </br>
@@ -80,7 +84,7 @@
          <div class="overlay2">
          <div class="login2">
          <div class="header2">
-           <h2>Sign Up as Property Owner</h2>
+           <h1 id="POLabel">Sign up as Property Owner</h1>
            <i class="fas fa-times" onclick="toggleSignUpP()"></i>
          </div>
           <div class="newForm2">
@@ -103,7 +107,7 @@
      <div class="overlay3">
          <div class="login3">
          <div class="header3">
-           <h2>Sign Up as a Member</h2>
+           <h1 id="POLabel">Sign up as a Member</h1>
            <i class="fas fa-times" onclick="toggleSignUpM()"></i>
          </div>
           <div class="newForm3">
@@ -137,7 +141,7 @@
 
 <section class="hero">
   <h2>TRUSTED REVIEWS</h2>
-  <p>Search for Variety of Holiday Homes<Br> on the Trusted Review website <Br> under blockchain technology development</p>
+  <p>Search for Variety of Holiday Homes<Br> on the Trusted Review website <Br> under Blockchain technology development</p>
    <input type="text" id="Search" class="searchBox" placeholder="search for a holiday home">
    <button id="button_1" class="searchBtn">Search</button>
 </section>
@@ -187,7 +191,7 @@ viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
 
 
 <hr class="new5"> 
-<h1 class="sectionTitel">Top Five Holiday Homes</h1>
+<h1 class="sectionTitle">Top Five Holiday Homes</h1>
 
 <!--Waves end-->
 </div>
@@ -445,13 +449,17 @@ var uu = sessionStorage.getItem('userId22');
           
 if(uu!=null)
 {
-   document.getElementById('signin').style.display='none';
-   document.getElementById('signout').style.display='block';
+   document.getElementById('sign-in').style.display='none';
+   document.getElementById('sign-upP').style.display='none';
+   document.getElementById('sign-upM').style.display='none';
+   document.getElementById('sign-out').style.display='inline';
 }else
 {
   
- document.getElementById('signin').style.display='block';
- document.getElementById('signout').style.display='none';
+ document.getElementById('sign-in').style.display='inline';
+  document.getElementById('sign-upP').style.display='inline';
+ document.getElementById('sign-upM').style.display='inline';
+ document.getElementById('sign-out').style.display='none';
  
 }
 
@@ -832,7 +840,7 @@ firebase.database().ref("Reviews").once('value').then(function (snapshot){
 function logout()
          {
           sessionStorage.removeItem('userId22');
-          window.location.href = "HomePage2.html"
+          window.location.href = "index.html"
          }
 </script>
 
