@@ -502,8 +502,16 @@ background: #eaeaea;
   padding-right: 6%;
  }
  
-
-
+#editbtn{
+  margin-right: 44%;
+}
+h1{
+    font-size: 30px;
+          font-family: 'Oswald', sans-serif;
+      text-align: center;
+    color: #300095;
+    font-weight: bold;
+   }
 	</style>
 	<title>Dashboard</title>
 </head>
@@ -542,10 +550,10 @@ background: #eaeaea;
         
   <!-- property list -->
        <table>
-        <h5> Manage your Account</h5>
+        <h1> Manage your Account</h1>
 
          <thead>
-          <th>  <button  class="btn btn__submit" onclick="editProfile()" >Edit</button> </th>
+          <th>  <button id="editbtn" class="btn btn__submit" onclick="editProfile()" >Edit</button> </th>
          </thead>
         
 
@@ -580,7 +588,7 @@ background: #eaeaea;
    </div>
   <div class="bodyWrapper" id="LastReviews">
     <div class="titleWrapper" style="background-color: #9CC7EA; color: white; font-style: bold; font-size: 20px;" >
-      Last Reviews
+      Latest Reviews
     </div>
   
     </div>
@@ -721,8 +729,9 @@ background: #eaeaea;
           document.getElementById('LastReviews').innerHTML+= 
           '<div class="newsWrapper one">'+
           '<div class="textWrapper">'+
-          '<div class="description">'+note.val().Txt+
-          '</div></div></div>';
+            '<div class="time">'+ note.val().DateTime+'</div>'+
+          '<div class="description"><b>'+note.val().Txt+ 
+          '</b></div></div></div>';
     
           
          // firebase.database().ref("Property").orderByChild('key').child(key2).child("PropertyName").once("value").then(function (n){
