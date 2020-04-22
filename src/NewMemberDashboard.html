@@ -568,9 +568,19 @@ background: #eaeaea;
    
     <div class="bodyWrapper" id="Notifications">
      
-
+    
+  
+  
+   </div>
+  <div class="bodyWrapper" id="LastReviews">
+    <div class="titleWrapper" style="background-color: #9CC7EA; color: white; font-style: bold; font-size: 20px;" >
+      Last Reviews
+    </div>
+  
     </div>
 
+ 
+   
 </div>
 <!-- Notification end -->
 
@@ -692,12 +702,58 @@ background: #eaeaea;
 
        }
       });
+      /// this is for last reveiws 
+
+      firebase.database().ref("Reviews").orderByChild('UID').equalTo(uu).limitToLast(4).once('value').then(function (snapshot){
+       if(snapshot.val()!=null)
+       {
+         var keyy;
+         snapshot.forEach(function (note){
+          keyy=note.val().PID;
+          key2=note.key;
+         // alert(keyy);
+          document.getElementById('LastReviews').innerHTML+= 
+          '<div class="newsWrapper one">'+
+          '<div class="textWrapper">'+
+          '<div class="description">'+note.val().Txt+
+          '</div></div></div>';
+    
+          
+         // firebase.database().ref("Property").orderByChild('key').child(key2).child("PropertyName").once("value").then(function (n){
+            //  var ReviewerName=n.val();
+  
+          //firebase.database().ref("Property").child(keyy).once("value").then(function (usersnap){
+            //  var ReviewerName=usersnap.val().PropertyName;
+        /// alert(ReviewerName);
+
+       //  });
+        });
+       
+       }else
+       {
+        document.getElementById('LastReviews').innerHTML+= 
+        '<div class="newsWrapper one">'+
+          '<div class="textWrapper">'+
+          '<div class="description"> No Reveiws found'+
+          '</div></div></div>';
+
+       }
+      });
+
+
+
+      ////enndd d  d
+
 
         firebase.database().ref("MEMBER").child(uu).once('value').then(function (snapshot){
             var userName= snapshot.val().FullName;
             var emaill= snapshot.val().Email;
             var thiqaah= snapshot.val().Thiqa;
-            
+            if(thiqaah==null){
+              thiqaah=0;
+            }
+            if(snapshot.val().URL!=null){
+           var memImage=snapshot.val().URL;}
             firebase.database().ref("Reviews").orderByChild('UID').equalTo(uu).once('value').then(function(r){
               numberOfReviews=r.numChildren();
            
@@ -709,6 +765,8 @@ background: #eaeaea;
          '<h1 class="profile-name">'+userName+'</h1>'+
          '<h1 class="profile-name">'+thiqaah+' thiqah </h1>'+
          '<h1 class="profile-name">'+numberOfReviews+' reveiws </h1>'+
+         + '<p class="collections-content  ">' + '</br>'
+         + '<img class="collections-content  "src=" '+ memImage+ '" style="width:30%; height: 20%; float:left;" >'+ '</p></div>'+'</ul> </div>';
          '<p class="profile-description"> Member </p> </div>';
 
 

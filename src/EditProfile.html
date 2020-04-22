@@ -229,14 +229,7 @@ background: #eaeaea;
         <label class="active" for="email"></label>
       </div>
   
-      <!--
-      <div class="file-field input-field">
-        <div class="btn"  style="color:#300095; background: #eaeaea" >
-          <span>File</span>
-          <img id="Image"/>
-          <input type="file" id="Picture"  placeholder="Upload Image" accept="Picture/*"  >
-        </div>
-        -->
+  
         <div class="input-field">
           <p class="input_fields" id="PropertyOwner" type="text">
         </div>
@@ -247,6 +240,20 @@ background: #eaeaea;
         <input placeholder="User Name" class="file-path validate" type="text" id="UserName">
       
     </div>
+
+    <div class="file-field input-field">
+      <div class="btn"  style="color:#300095; background: #eaeaea" >
+        <span>File</span>
+     
+        <input  type="file" placeholder="Upload Image" id="Picture" accept="Picture/*"  >
+      </div>
+     
+     <scr id="Image"/>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" placeholder="Upload image" id=#10>
+      </div>
+  </div>
+
     <button class="btn waves-effect waves-light"  style="color:#300095; background: #eaeaea"type="button" onclick="EditeProfile()"  id="Editbtn" >Edit Profile</button>
     </div>
   </form>
@@ -354,32 +361,43 @@ background: #eaeaea;
     firebase.initializeApp(firebaseConfig);
     var uu = sessionStorage.getItem('userId22');
 
-  
+  var P_FullName;
+  var P_Email;
+  var P_UserName;
+  var p_thiqah;
+  var P_Image;
+  var P_PropertyOwner;
     firebase.database().ref("MEMBER").child(uu).once('value').then(function (snapshot){
 
       P_FullName=snapshot.val().FullName;
       P_Email =snapshot.val().Email;
       P_UserName =snapshot.val().Username;
-
+      p_thiqah=snapshot.val().Thiqa;
+      P_Image=snapshot.val().URL;
+     if(p_thiqah==null)
+     p_thiqah=0;
       P_PropertyOwner =snapshot.val().PropertyOwner;
-   
+
+
+      document.getElementById("Image").src=P_Image;
+
+     document.getElementById("#10").value=P_Image;
 
       document.getElementById("FullName").value=P_FullName;
       document.getElementById("Email").value=P_Email;
       document.getElementById("UserName").value=P_UserName;
-
-      
-      document.getElementById("PropertyOwner").value=P_PropertyOwner;
 
     });
 
    
 
    function EditeProfile() {
+     
 
       var FullNameN = document.getElementById("FullName").value;
       var EmailN = document.getElementById("Email").value;
       var UserNameN = document.getElementById("UserName").value;
+    
 
       var PropertyOwnerN =document.getElementById("PropertyOwner").value;
 
@@ -396,9 +414,9 @@ background: #eaeaea;
       return;
    } 
    
-
-   /*
-   var Picture = document.getElementById("Picture").files[0];
+   if(document.getElementById("Picture").files.length !=0)
+    {
+      var Picture = document.getElementById("Picture").files[0];
       
       var PictureName = Picture.name;
       var storageRef = firebase.storage().ref('images/' + PictureName);
@@ -419,9 +437,8 @@ background: #eaeaea;
           // get upload pic here
           downURL=downlaodURL;
           console.log(downlaodURL);
-        });
-      });  
-      */
+  
+
 
     
       firebase.database().ref('MEMBER').child(uu).set({
@@ -429,7 +446,9 @@ background: #eaeaea;
           FullName: FullNameN,
           MID:uu,
           Username: UserNameN,
-          PropertyOwner: PropertyOwnerN
+          PropertyOwner: P_PropertyOwner,
+          URL:downlaodURL,
+          Thiqa:p_thiqah
 
           
      }).then(function(){
@@ -437,10 +456,36 @@ background: #eaeaea;
       location.reload();
       return false;
     });
-     
+          
+        });
+        
+  
+   
+      });
 
+}
+else{
+  firebase.database().ref('MEMBER').child(uu).set({
+          Email: EmailN,
+          FullName: FullNameN,
+          MID:uu,
+          Username: UserNameN,
+          PropertyOwner: P_PropertyOwner,
+          URL:P_Image,
+          Thiqa:p_thiqah
 
-} 
+          
+     }).then(function(){
+      alert('Edited Successfully');
+      location.reload();
+      return false;
+    });
+          
+      
+
+}
+
+   }
 
    
 function logout()
