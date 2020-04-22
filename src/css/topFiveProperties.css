@@ -98,7 +98,10 @@ border-bottom-right-radius: 12px;
 .card__title {
     margin-top: 5px;
     margin-bottom: 10px;
+    font-size: 17px;
+    font-weight: bold;
     font-family: 'Roboto Slab', serif;
+    color: #295069;
 }
 
 .card__by {
