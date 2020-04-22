@@ -254,7 +254,7 @@ background: #eaeaea;
       </div>
   </div>
 
-    <button class="btn waves-effect waves-light"  style="color:#300095; background: #eaeaea"type="button" onclick="EditeProfile()"  id="Editbtn" >Edit Profile</button>
+    <button class="btn waves-effect waves-light"  style="color:#300095; background: #eaeaea"type="button" onclick="EditProfile()"  id="Editbtn" >Edit Profile</button>
     </div>
   </form>
    </div>
@@ -391,7 +391,7 @@ background: #eaeaea;
 
    
 
-   function EditeProfile() {
+   function EditProfile() {
      
 
       var FullNameN = document.getElementById("FullName").value;
@@ -453,7 +453,8 @@ background: #eaeaea;
           
      }).then(function(){
       alert('Edited Successfully');
-      location.reload();
+      window.history.back();
+      // location.reload();
       return false;
     });
           
@@ -477,7 +478,8 @@ else{
           
      }).then(function(){
       alert('Edited Successfully');
-      location.reload();
+      window.history.back();
+      // location.reload();
       return false;
     });
           
