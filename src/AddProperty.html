@@ -83,6 +83,9 @@
 #AddProperty{
   width: 70%;
 }
+#Add {
+  margin-left: 45%;
+}
 
 .main-header {
   width: 100%;
@@ -127,10 +130,8 @@ color: #222;
   border-bottom: 2px solid grey;
 }
 
-.account {
-  float: right;
-}
-.account .btn {
+
+ .btn {
   display: inline-block;
   width: 84px;
   height: 36px;
@@ -141,21 +142,26 @@ color: #222;
   font-size: 12px;
   font-weight: bold;
   margin-left: 5px;
-  margin-top: 15px;
+  margin-top: 10px;
+  
   border: 2px solid #fff;
   transition: all .2s ease;
   z-index: 4;
 }
-.account .btn-secondary {
+#id{
+  padding-top: 0.5%;
+ 
+}
+ .btn-secondary {
   color: #300095;
   background: #eaeaea;
     border: 2px solid #fff;
 }
-.account .btn:hover {
+.btn:hover {
 background: #eaeaea;
   border-color: #eaeaea;
 }
-.account .btn-secondary:hover {
+ .btn-secondary:hover {
   background: #eaeaea;
   border-color: #eaeaea;
 }
@@ -170,10 +176,12 @@ background: #eaeaea;
   font-weight: bold;
   border: 2px solid #fff;
   transition: all .2s ease;
-  margin-left: 600px;
+  margin-left: 670px;
  }
 
-
+#file{
+  padding-top: 0%;
+}
   
   </style>
 </head>
@@ -257,7 +265,7 @@ background: #eaeaea;
    
     
     <div class="file-field input-field">
-      <div class="btn"  style="color:#300095; background: #eaeaea" >
+      <div class="btn " id="file"  style="color:#300095; background: #eaeaea" >
         <span>File</span>
       
         <input placeholder="Upload Image" type="file" id="Picture" accept="Picture/*"  >

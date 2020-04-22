@@ -3,7 +3,7 @@
 <html>
 <head>
        <title>Dashboard</title>
-
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="css/materialize.min.css">
   <link rel="stylesheet" type="text/css" href="css/HomePage.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.9.7/chartist.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.9.7/chartist.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -272,8 +273,8 @@ a{
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 .profile-card .profile-image {
-  width: 50px;
-  height: 40px;
+  width: 60%;
+  height: 80%;
   box-sizing: border-box;
   padding: 4px;
   position: relative;
@@ -300,7 +301,7 @@ a{
   width: 256px;
   font-size: 25px;
   box-sizing: border-box;
-  padding: 0 16px;
+  padding: 22px 16px;
   text-align: center;
   color: #2b3f60;
   text-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -310,7 +311,7 @@ a{
 .profile-card .profile-description {
   width: 256px;
   box-sizing: border-box;
-  padding: 0 24px;
+  padding: 5px 24px 3px;
   color: #748aa4;
   text-shadow: 0 2px 6px rgba(0,0,0,0.1);
   position: relative;
@@ -378,26 +379,9 @@ h5 {
 	color: black;
 }
 
-.btn {
-  text-decoration: none;
-  text-align: center;
-  border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
-  /* display: inline-block; */
-  margin: 12px 12px 12px 0px;
-  font-size: 16px;
-  text-transform: uppercase;
-  padding: 3px 24px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 1s;
-  color:#300095; 
-  background-color: #eaeaea;
-  float: right;
-}
+/* .btn {
+
+} */
 .btn__submit {
   width: 15%;
   
@@ -431,9 +415,10 @@ position: absolute;
   float: left;
   color: grey;
   
+  
 }
 .main-nav {
-  margin-left: 150px; 
+ margin-right: 60%;
   z-index: 1;
 }
 .main-nav ul{ 
@@ -451,10 +436,8 @@ color: #222;
   border-bottom: 2px solid grey;
 }
 
-.account {
-  float: right;
-}
-.account .btn {
+
+.btn {
   display: inline-block;
   width: 84px;
   height: 36px;
@@ -465,21 +448,37 @@ color: #222;
   font-size: 12px;
   font-weight: bold;
   margin-left: 5px;
-  margin-top: 15px;
   border: 2px solid #fff;
   transition: all .2s ease;
   z-index: 4;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  margin: 12px 12px 12px 0px;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 3px 24px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 1s;
+  color:#300095; 
+  background-color: #eaeaea;
+  float: right;
 }
-.account .btn-secondary {
+.btn .btn-secondary {
   color: #300095;
   background: #eaeaea;
     border: 2px solid #fff;
 }
-.account .btn:hover {
+.btn:hover {
 background: #eaeaea;
   border-color: #eaeaea;
 }
-.account .btn-secondary:hover {
+ .btn-secondary:hover {
   background: #eaeaea;
   border-color: #eaeaea;
 }
@@ -494,10 +493,25 @@ background: #eaeaea;
   font-weight: bold;
   border: 2px solid #fff;
   transition: all .2s ease;
-  margin-left: 600px;
+  margin-left: 2px;
+  /* padding-top: none; */
+  margin-top: 1%;
+  padding-top: 0.5%;
+  margin-right: 13%;
+  margin-top: 10px;
+  padding-right: 6%;
  }
-
-
+ 
+#editbtn{
+  margin-right: 44%;
+}
+h1{
+    font-size: 30px;
+          font-family: 'Oswald', sans-serif;
+      text-align: center;
+    color: #300095;
+    font-weight: bold;
+   }
 	</style>
 	<title>Dashboard</title>
 </head>
@@ -514,7 +528,7 @@ background: #eaeaea;
       <ul>
          <li><a href="index.html" style="color: grey; text-decoration: none;">Home</a></li>
          <li><a href="HolidayHomes.html" style="color: grey; text-decoration: none;">Holiday Homes</a></li>
-          <button id="sign-out" onclick="logout()">Sign Out</button>
+          <button  class="btn btn-secondary"id="sign-out" onclick="logout()">Sign Out</button>
       </ul>
       </nav>
       </header>
@@ -536,10 +550,10 @@ background: #eaeaea;
         
   <!-- property list -->
        <table>
-        <h5> Manage your Account</h5>
+        <h1> Manage your Account</h1>
 
          <thead>
-          <th>  <button  class="btn btn__submit" onclick="editProfile()" >Edit</button> </th>
+          <th>  <button id="editbtn" class="btn btn__submit" onclick="editProfile()" >Edit</button> </th>
          </thead>
         
 
@@ -557,7 +571,7 @@ background: #eaeaea;
 
   	<!-- Profile card -->
     <div class="profile-card" id="profile-card">
-  <i class="profile-image-none material-icons">account_circle</i>
+  <!-- <i class="profile-image-none material-icons">account_circle</i> -->
 </div>
  <!-- Notification Box -->
 
@@ -574,7 +588,7 @@ background: #eaeaea;
    </div>
   <div class="bodyWrapper" id="LastReviews">
     <div class="titleWrapper" style="background-color: #9CC7EA; color: white; font-style: bold; font-size: 20px;" >
-      Last Reviews
+      Latest Reviews
     </div>
   
     </div>
@@ -655,7 +669,7 @@ background: #eaeaea;
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-sm-7">
-                            <p class="mb-0 f_400">© cakecounter Inc.. 2019 All rights reserved.</p>
+                            <!-- <p class="mb-0 f_400">© cakecounter Inc.. 2019 All rights reserved.</p> -->
                         </div>
                     </div>
                 </div>
@@ -715,8 +729,9 @@ background: #eaeaea;
           document.getElementById('LastReviews').innerHTML+= 
           '<div class="newsWrapper one">'+
           '<div class="textWrapper">'+
-          '<div class="description">'+note.val().Txt+
-          '</div></div></div>';
+            '<div class="time">'+ note.val().DateTime+'</div>'+
+          '<div class="description"><b>'+note.val().Txt+ 
+          '</b></div></div></div>';
     
           
          // firebase.database().ref("Property").orderByChild('key').child(key2).child("PropertyName").once("value").then(function (n){
@@ -761,13 +776,13 @@ background: #eaeaea;
           
 
             document.getElementById("profile-card").innerHTML+=
-            
+            '<img class="profile-image" style="width:40%; height:80%;" src=\''+memImage+'\'> '+
          '<h1 class="profile-name">'+userName+'</h1>'+
-         '<h1 class="profile-name">'+thiqaah+' thiqah </h1>'+
-         '<h1 class="profile-name">'+numberOfReviews+' reveiws </h1>'+
-         + '<p class="collections-content  ">' + '</br>'
-         + '<img class="collections-content  "src=" '+ memImage+ '" style="width:30%; height: 20%; float:left;" >'+ '</p></div>'+'</ul> </div>';
-         '<p class="profile-description"> Member </p> </div>';
+         '<p class="profile-description">'+thiqaah+' thiqah </p>'+
+         '<p class="profile-description">'+numberOfReviews+' reveiws </p>'+
+        //  + '<p class="collections-content  ">' + '</br>'
+         +  '</div>'+'</ul> </div>';
+         
 
 
 

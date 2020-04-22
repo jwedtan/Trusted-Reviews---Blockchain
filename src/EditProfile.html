@@ -182,6 +182,9 @@ background: #eaeaea;
   transition: all .2s ease;
   margin-left: 600px;
  }
+ #file{
+  padding-top: 0%;
+}
 
 
 
@@ -242,7 +245,7 @@ background: #eaeaea;
     </div>
 
     <div class="file-field input-field">
-      <div class="btn"  style="color:#300095; background: #eaeaea" >
+      <div class="btn" id="file" style="color:#300095; background: #eaeaea" >
         <span>File</span>
      
         <input  type="file" placeholder="Upload Image" id="Picture" accept="Picture/*"  >
@@ -254,7 +257,7 @@ background: #eaeaea;
       </div>
   </div>
 
-    <button class="btn waves-effect waves-light"  style="color:#300095; background: #eaeaea"type="button" onclick="EditeProfile()"  id="Editbtn" >Edit Profile</button>
+    <button class="btn waves-effect waves-light"  style="color:#300095; background: #eaeaea"type="button" onclick="EditProfile()"  id="Editbtn" >Edit Profile</button>
     </div>
   </form>
    </div>
@@ -391,7 +394,7 @@ background: #eaeaea;
 
    
 
-   function EditeProfile() {
+   function EditProfile() {
      
 
       var FullNameN = document.getElementById("FullName").value;
@@ -453,7 +456,8 @@ background: #eaeaea;
           
      }).then(function(){
       alert('Edited Successfully');
-      location.reload();
+      window.history.back();
+      // location.reload();
       return false;
     });
           
@@ -477,7 +481,8 @@ else{
           
      }).then(function(){
       alert('Edited Successfully');
-      location.reload();
+      window.history.back();
+      // location.reload();
       return false;
     });
           
