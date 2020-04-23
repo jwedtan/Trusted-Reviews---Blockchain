@@ -426,7 +426,8 @@ background: #eaeaea;
             <h1 id="propName"></h1>
           </br> </br>
             <p id="desc"> </p>
-            
+            <div id="location">
+              </div>  
             <p id="txtRate" class="p-lite" style="font-size: 27px;">0 Stars</p>
           </div>
          
@@ -582,7 +583,7 @@ function handleAddRev(){
         user.forEach(function (property){
           if(property.key===PID)
           {
-
+            property.val().Location['lat']
             reviewCount=0;
             pRate0=0;
             i=0;
@@ -595,6 +596,9 @@ function handleAddRev(){
             document.getElementById('property-img').src=property.val().Image;
             document.getElementById('desc').innerText=property.val().Description;
                   document.getElementById('txtRate').innerHTML=pRate0+" Stars";
+                  document.getElementById('location').innerHTML+=
+            '<span  class="fa fa-map-marker icon" onclick="SClick(\'https://maps.google.com/?q='+property.val().Location['lat']+
+            ','+property.val().Location['lng']+'\')"></span>'; 
                   
               }
               reviewCount=reviewSnap.numChildren();
@@ -609,6 +613,9 @@ function handleAddRev(){
                   document.getElementById('property-img').src=property.val().Image;
                   document.getElementById('desc').innerText=property.val().Description;
                   document.getElementById('txtRate').innerText=pRate0+" Stars";
+                  document.getElementById('location').innerHTML+=
+            '<span  class="fa fa-map-marker icon" onclick="SClick(\'https://maps.google.com/?q='+property.val().Location['lat']+','
+            +property.val().Location['lng']+'\')"></span>';
                   
                 }
               });
@@ -685,6 +692,12 @@ function handleAddRev(){
   var url_string = window.location.href; //window.location.href
   var url = new URL(url_string);
   var PID1 = url.searchParams.get("p");
+ 
+  if(uu==null){
+    window.alert("You have to log in to write a review!");
+return;
+
+  }
   
   if(PID1!=null){
     var userid=uu;
@@ -706,10 +719,11 @@ function handleAddRev(){
     Dislike:{'defult':0},
   }).then(function (){
     alert("Review added successfully");
-
+    document.getElementById('review').innerHTML="";
     getReviews();
  
     document.getElementById('RText').value=" ";
+  
     starmark2();
    
   });

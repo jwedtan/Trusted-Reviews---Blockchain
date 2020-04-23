@@ -697,13 +697,15 @@ background: #eaeaea;
             
             firebase.database().ref("MEMBER").child(ReviewerID).child('FullName').once("value").then(function (usersnap){
               var ReviewerName=usersnap.val();
+            //  firebase.database().ref("Property").child(uu).child(prpID).once("value").then(function (snapshot){
 
               document.getElementById("Notifications").innerHTML+=
             
               '<div class="newsWrapper one">'+
               '<div class="textWrapper">'+
               '<div class="time">'+ ReviewDate +'</div>'+
-              '<div class="description"> <b>'+ ReviewerName +'</b> left a review.'+
+              '<div class="description"> <b>'+ ReviewerName +'</b> left a review on '+ prpName +''+
+          
               '</div></div></div>'
              
             })
@@ -715,6 +717,7 @@ background: #eaeaea;
          });
           });
          });
+       // });
          firebase.database().ref("MEMBER").child(uu).once('value').then(function (snapshot){
             var userName= snapshot.val().FullName;
             var emaill= snapshot.val().Email;

@@ -551,6 +551,7 @@ h1{
   <!-- property list -->
        <table>
         <h1> Manage your Account</h1>
+        <label id="name" ></label>
 
          <thead>
           <th>  <button id="editbtn" class="btn btn__submit" onclick="editProfile()" >Edit</button> </th>
@@ -695,7 +696,7 @@ h1{
           var uu = sessionStorage.getItem('userId22');
         
        
-        firebase.database().ref("Notification").orderByChild('UID').equalTo(uu).limitToLast(2).once('value').then(function (snapshot){
+        firebase.database().ref("Notification").orderByChild('UID').equalTo(uu).limitToLast(4).once('value').then(function (snapshot){
        if(snapshot.val()!=null)
        {
          snapshot.forEach(function (note){
@@ -716,23 +717,38 @@ h1{
 
        }
       });
+
+
+     
       /// this is for last reveiws 
 
+      var pid;
       firebase.database().ref("Reviews").orderByChild('UID').equalTo(uu).limitToLast(4).once('value').then(function (snapshot){
        if(snapshot.val()!=null)
        {
          var keyy;
          snapshot.forEach(function (note){
-          keyy=note.val().PID;
+          pid=note.val().PID;
+          //alert(pid);
+
           key2=note.key;
+ 
+
+
+
+          
          // alert(keyy);
           document.getElementById('LastReviews').innerHTML+= 
           '<div class="newsWrapper one">'+
           '<div class="textWrapper">'+
             '<div class="time">'+ note.val().DateTime+'</div>'+
           '<div class="description"><b>'+note.val().Txt+ 
+          //  '<div class="description"><b>'+x+ 
+          
+       
           '</b></div></div></div>';
-    
+
+
           
          // firebase.database().ref("Property").orderByChild('key').child(key2).child("PropertyName").once("value").then(function (n){
             //  var ReviewerName=n.val();
@@ -742,7 +758,19 @@ h1{
         /// alert(ReviewerName);
 
        //  });
+
+
+    
+       //  
+       //x=name(pid);
+       //console.log(x);
+     //  alert(x);
+  
+  
         });
+    
+
+        
        
        }else
        {
@@ -751,6 +779,7 @@ h1{
           '<div class="textWrapper">'+
           '<div class="description"> No Reveiws found'+
           '</div></div></div>';
+          
 
        }
       });
@@ -758,6 +787,7 @@ h1{
 
 
       ////enndd d  d
+   
 
 
         firebase.database().ref("MEMBER").child(uu).once('value').then(function (snapshot){
@@ -794,6 +824,34 @@ h1{
             }
             
             );
+
+  /*function name(pid){
+
+var name="";
+          firebase.database().ref("Property").once('value').then(function (POwnerList){
+ POwnerList.forEach(function (pOwner){
+   firebase.database().ref("Property").child(pOwner.key).child(pid).once('value').then(function(P){
+   name=P.val().PropertyName;
+   alert(name);
+   return this.name ;
+
+ 
+
+   
+
+ 
+  });
+
+
+});
+
+
+
+});
+
+
+
+            }*/
      
    function editProfile(){
     window.location.href="EditProfile.html";

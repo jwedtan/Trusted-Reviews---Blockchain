@@ -258,13 +258,13 @@ background: #eaeaea;
       <div class="file-field input-field">
         <div class="btn"  style="color:#300095; background: #eaeaea" >
           <span>File</span>
-          <scr id="Image"/>
+  
           <input  type="file" placeholder="Upload Image" id="Picture" accept="Picture/*"  >
         </div>
        
     
         <div class="file-path-wrapper">
-          <input class="file-path validate" type="text" placeholder="Upload image">
+          <input class="file-path validate" type="text" placeholder="Upload image" id="Image">
         </div>
     </div>
     <div id="map"></div>
@@ -379,6 +379,7 @@ background: #eaeaea;
     var P_Image;
     var P_location;
     var P_marker;
+    var res;
     firebase.database().ref("Property").child(uu).child(PID).once("value").then(function (snapshot){
       P_Address=snapshot.val().Address;
       P_City=snapshot.val().City;
@@ -393,6 +394,17 @@ background: #eaeaea;
         position: P_location,
         map:map
       });
+      if(P_Image==null){
+        res="";
+     }
+     else{
+
+      var str =P_Image;
+      var pos = str.indexOf("s%2F");
+    var pos2 = str.indexOf("?alt");
+   res = str.substring(pos+4,pos2);
+ 
+     }
       map.setCenter(P_location);
       map.setZoom(19);
      
@@ -403,7 +415,7 @@ background: #eaeaea;
 
       document.getElementById("Price").value=P_Price;
       document.getElementById("OtherInformation").value=P_OtherInfo;
-      document.getElementById("Image").src=P_Image;
+      document.getElementById("Image").value=res;
       var e = document.getElementById("Types");
       var e2 = document.getElementById("Cities");
       selectOption(e, P_Type);
@@ -511,7 +523,7 @@ background: #eaeaea;
 
      }).then(function(){
        alert('Edited Successfully');
-       window.history.back();
+    
       //  location.reload();
        return false;
 

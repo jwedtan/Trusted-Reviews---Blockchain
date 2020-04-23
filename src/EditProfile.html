@@ -182,9 +182,6 @@ background: #eaeaea;
   transition: all .2s ease;
   margin-left: 600px;
  }
- #file{
-  padding-top: 0%;
-}
 
 
 
@@ -245,7 +242,7 @@ background: #eaeaea;
     </div>
 
     <div class="file-field input-field">
-      <div class="btn" id="file" style="color:#300095; background: #eaeaea" >
+      <div class="btn"  style="color:#300095; background: #eaeaea" >
         <span>File</span>
      
         <input  type="file" placeholder="Upload Image" id="Picture" accept="Picture/*"  >
@@ -257,7 +254,7 @@ background: #eaeaea;
       </div>
   </div>
 
-    <button class="btn waves-effect waves-light"  style="color:#300095; background: #eaeaea"type="button" onclick="EditProfile()"  id="Editbtn" >Edit Profile</button>
+    <button class="btn waves-effect waves-light"  style="color:#300095; background: #eaeaea"type="button" onclick="EditeProfile()"  id="Editbtn" >Edit Profile</button>
     </div>
   </form>
    </div>
@@ -370,6 +367,7 @@ background: #eaeaea;
   var p_thiqah;
   var P_Image;
   var P_PropertyOwner;
+  var res;
     firebase.database().ref("MEMBER").child(uu).once('value').then(function (snapshot){
 
       P_FullName=snapshot.val().FullName;
@@ -379,12 +377,24 @@ background: #eaeaea;
       P_Image=snapshot.val().URL;
      if(p_thiqah==null)
      p_thiqah=0;
+     if(P_Image==null){
+      res="";
+     }
+     else{
+
+      var str =P_Image;
+      var pos = str.indexOf("s%2F");
+    var pos2 = str.indexOf("?alt");
+  var res = str.substring(pos+4,pos2);
+
+     }
       P_PropertyOwner =snapshot.val().PropertyOwner;
 
 
-      document.getElementById("Image").src=P_Image;
 
-     document.getElementById("#10").value=P_Image;
+      document.getElementById("Image").src=res;
+
+     document.getElementById("#10").value=res;
 
       document.getElementById("FullName").value=P_FullName;
       document.getElementById("Email").value=P_Email;
@@ -394,7 +404,7 @@ background: #eaeaea;
 
    
 
-   function EditProfile() {
+   function EditeProfile() {
      
 
       var FullNameN = document.getElementById("FullName").value;
@@ -456,8 +466,8 @@ background: #eaeaea;
           
      }).then(function(){
       alert('Edited Successfully');
-      window.history.back();
-      // location.reload();
+      location.reload();
+      window.location.href = "NewMemberDashboard.html";
       return false;
     });
           
@@ -481,8 +491,8 @@ else{
           
      }).then(function(){
       alert('Edited Successfully');
-      window.history.back();
-      // location.reload();
+      location.reload();
+      window.location.href = "NewMemberDashboard.html";
       return false;
     });
           
