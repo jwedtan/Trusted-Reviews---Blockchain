@@ -619,6 +619,54 @@ hr.new5 {
   padding-top: 200px;
 }
 
-.ViewBlockchain{
-  
+.Aboutus {
+  min-width: 1150px;
+  height: 990px;
+  text-align: center;
+  overflow: auto;
+  background-color: #f4f5f6;
+  background-size: 500px; 
+  background-position: 820px 150px;
+}
+.Aboutus h2 { 
+/* trusted reviews */ 
+  margin-top: 50px;
+  padding-bottom: 30px;
+  color: #295069;
+  font-size: 70px;
+  line-height: 60px;
+  letter-spacing: -2px;
+  font-style: italic;
+  font-family: 'Racing Sans One', cursive;
+  font-family: 'Yatra One', cursive;
+  font-family: 'Sirin Stencil', cursive;
+  font-family: 'Lalezar', cursive;
+  font-family: 'Fredoka One', cursive;
+}
+.Aboutus p {
+  /* search for variety ....  */ 
+  font-size: 20px;
+  margin-top: 30px;
+    margin-right: 200px;
+    margin-left: 200px;
+    text-align: justify;
+      color: #64318D;
+  margin-bottom: 10px;
+font-family: 'Open Sans', sans-serif;
+
+}
+.about-img{
+  width: 300px;
+  height: 200px;
+  margin-bottom: 0px;
+  margin-top: 100px;
+}
+
+.bold{
+  font-style: italic;
+  font-weight: bold;
+    font-size: 20px;
+        color: #64318D;
+  margin-bottom: 10px;
+font-family: 'Open Sans', sans-serif;
 }

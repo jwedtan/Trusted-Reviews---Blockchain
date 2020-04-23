@@ -196,32 +196,117 @@ display: inline-block;
           margin-left: 5%;
           font-weight: bold;
     }
-    .header{
-      display: flex;
-      width: 100%;
-    }
-        </style>
+ </style>
 
     </head>
 
 
 
     <body>
+
              <header class="main-header">
        <div class="header">
        <img src="media/logo.png" class="webLogo">
-    <nav class="main-nav">
+  <!-- //////////////////////////////////// -->
+        <div class="account">
+        <button class="btn btn-secondary" id="sign-upP" onclick="toggleSignUpP()"><a>Sign Up as a Property owner</a></button>
+        <button class="btn btn-secondary" id="sign-upM" onclick="toggleSignUpM()"><a>Sign Up as a Member</a></button>
+        <button class="btn btn-secondary" id="sign-in" onclick="toggleLogin()"><a >Sign in</a></button>
+         <button class="btn btn-secondary" id="sign-out" onclick="logout()">Sign out</button>
+        </div>
+
+
+
+         <div class="overlay">
+         <div class="login4">
+         <div class="header2">
+           <h1 id="POLabel">Sign in</h1>
+           <i class="fas fa-times" onclick="toggleLogin()"></i>
+         </div>
+     
+         <div class="newForm">
+         <div  class="form">
+            <input type="text" id="LEmail" placeholder="Enter your Email" />
+            <input type="password"  id="LPassword" placeholder="Enter your Password"/>
+            <div class="loginbutton">
+          <button onclick="Login()">sign in</button>
+          </br>
+          </br>
+          </br>
+          <button class="btn" id="sign-up"><a>Sign in with google</a></button>
+          </br>
+          </br>
+          </br>
+          <button class="btn" id="sign-up"><a>Sign in with facebook</a></button>
+          </br>
+          </br>
+          </br>
+          </div>
+         <h2>Forget Password?</h2>
+          </div>
+          </div>  
+
+         </div> <!-- login closing tag -->
+         </div> <!-- overlay closing tag -->
+
+          <!--Register-->
+         <div class="overlay2">
+         <div class="login2">
+         <div class="header2">
+           <h1 id="POLabel">Sign up as Property Owner</h1>
+           <i class="fas fa-times" onclick="toggleSignUpP()"></i>
+         </div>
+          <div class="newForm2">
+         <div class="form">
+            <input type="text" id="PFullName" placeholder="Full name" />
+            <input type="text" id="PUsername" placeholder="Username" />
+            <input type="text" id="PEmail" placeholder="Email" />
+            <input type="text" id="PVerifyEmail" placeholder="Verify Email" />
+            <input type="password"  id="PPassword" placeholder="Password"/>
+            <input type="password"  id="PVerifyPassword" placeholder="Verify Password"/>
+            <div class="SignUpbutton">
+            <button onclick="RegisterP()">Register</button>
+          </div>
+          </div>
+          </div>  
+        </div> <!-- login closing tag -->
+        </div> <!-- overlay closing tag -->
+
+
+     <div class="overlay3">
+         <div class="login3">
+         <div class="header3">
+           <h1 id="POLabel">Sign up as a Member</h1>
+           <i class="fas fa-times" onclick="toggleSignUpM()"></i>
+         </div>
+          <div class="newForm3">
+         <div  class="form">
+            <input type="text" id="MFullName" placeholder="Full name" />
+            <input type="text" id="MUsername" placeholder="Username" />
+            <input type="text" id="MEmail" placeholder="Email" />
+            <input type="text" id="MVerifyEmail" placeholder="Verify Email" />
+            <input type="password"  id="MPassword" placeholder="Password"/>
+            <input type="password"  id="MVerifyPassword" placeholder="Verify Password"/>
+            <div class="SignUpbutton">
+            <button onclick="RegisterM()">Register</button>
+          </div>
+          </div>
+          </div>  
+        </div> <!-- login closing tag -->
+        </div> <!-- overlay closing tag -->
+        </div> <!-- Header closing tag -->
+
+<!----->
+         <nav class="main-nav">
          <ul>
-            <li id="navPropertyOwner" style="display: none;"><a href="propertyOwnerDashboard.html"> Maneg Properties</a></li>
-            <li><a href="HolidayHomes.html" style="color: grey; text-decoration: none;"> Holiday Homes</a></li>
-            <li><a href="Login.html" style="color: grey; text-decoration: none;">Sign In</a></li>
-            <li><a  href="MemberDashboard.html" style="color: grey; text-decoration: none;"> profile</a></li>
-            <li><a  href="Memberregisteration.html" style="color: grey; text-decoration: none;"> register</a></li>
-            <li><a id="signin" href="Login.html">Sign In</a></li>
-            <li><a id="signout" href="#" onclick="logout()">Sign Out</a></li>
+            <li><a href="index.html" style="color: grey; text-decoration: none;">Home</a></li>
+            <li><a href="HolidayHomes.html" style="color: grey; text-decoration: none;">Holiday Homes</a></li>
+            <li><a href="aboutus.html" style="color: grey; text-decoration: none;">About us</a></li>
          </ul>
          </nav>
          </header>
+
+
 
 
        </br>
@@ -258,52 +343,28 @@ display: inline-block;
 
 
 
-
-
-
-
-
 <!--Footer-->
-
-<footer class="new_footer_area bg_color">
+      <footer class="new_footer_area bg_color">
             <div class="new_footer_top">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
                             <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
                                 <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
-                                <p>Don’t miss any updates of our new templates and extensions.!</p>
-                                <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1">
-                                    <input type="text" name="EMAIL" class="form-control memail" placeholder="Email">
-                                    <button class="btn btn_get btn_get_two" type="submit">Subscribe</button>
+                                <p>Contact us via Email <br> We are always there for you!</p>
+                                    <button class="btn btn_get btn_get_two"><a href="mailto:TrustedReviewsBC@gmail.com?Subject=Contact%20Trusted Reviews" target="_top">Email us</button>
                                     <p class="mchimp-errmessage" style="display: none;"></p>
                                     <p class="mchimp-sucmessage" style="display: none;"></p>
                                 </form>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
-                                <h3 class="f-title f_600 t_color f_size_18">Download</h3>
-                                <ul class="list-unstyled f_list">
-                                    <li><a href="#">Company</a></li>
-                                    <li><a href="#">Android App</a></li>
-                                    <li><a href="#">ios App</a></li>
-                                    <li><a href="#">Desktop</a></li>
-                                    <li><a href="#">Projects</a></li>
-                                    <li><a href="#">My tasks</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                      
                         <div class="col-lg-3 col-md-6">
                             <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
-                                <h3 class="f-title f_600 t_color f_size_18">Help</h3>
+                                <h3 class="f-title f_600 t_color f_size_18">More</h3>
                                 <ul class="list-unstyled f_list">
+                                    <li><a href="AboutUs.html">About us</a></li>
                                     <li><a href="#">FAQ</a></li>
-                                    <li><a href="#">Term &amp; conditions</a></li>
-                                    <li><a href="#">Reporting</a></li>
-                                    <li><a href="#">Documentation</a></li>
-                                    <li><a href="#">Support Policy</a></li>
-                                    <li><a href="#">Privacy</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -311,10 +372,9 @@ display: inline-block;
                             <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
                                 <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
                                 <div class="f_social_icon">
-                                    <a href="#" class="fab fa-facebook"></a>
-                                    <a href="#" class="fab fa-twitter"></a>
-                                    <a href="#" class="fab fa-linkedin"></a>
-                                    <a href="#" class="fab fa-pinterest"></a>
+                                    <a href="https://facebook.com" class="fab fa-facebook"></a>
+                                    <a href="https://twitter.com/trustedreviewsB" class="fab fa-twitter"></a>
+                                    <a href="https://linkedin.com" class="fab fa-linkedin"></a>
                                 </div>
                             </div>
                         </div>
@@ -329,12 +389,15 @@ display: inline-block;
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-6 col-sm-7">
-                            <p class="mb-0 f_400">© cakecounter Inc.. 2019 All rights reserved.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </footer>
+
+
+
+
 
     </body> 
 
@@ -360,15 +423,23 @@ var uu = sessionStorage.getItem('userId22');
           
 if(uu!=null)
 {
-   document.getElementById('signin').style.display='none';
-   document.getElementById('signout').style.display='block';
+   document.getElementById('sign-in').style.display='none';
+   document.getElementById('sign-upP').style.display='none';
+   document.getElementById('sign-upM').style.display='none';
+   document.getElementById('sign-out').style.display='inline';
 }else
 {
   
- document.getElementById('signin').style.display='block';
- document.getElementById('signout').style.display='none';
-  
+ document.getElementById('sign-in').style.display='inline';
+  document.getElementById('sign-upP').style.display='inline';
+ document.getElementById('sign-upM').style.display='inline';
+ document.getElementById('sign-out').style.display='none';
+ 
 }
+
+firebase.auth.Auth.Persistence.LOCAL;
+
+
 
 var url_string = window.location.href; //window.location.href
 var url = new URL(url_string);
@@ -538,6 +609,241 @@ function logout()
 
 
 </script>
+
+
+<script>
+function Login(){
+
+var email = document.getElementById('LEmail').value;
+var password = document.getElementById('LPassword').value;
+
+   if (email.length < 4) {
+    window.alert('Please enter an email address.');
+    return;
+  }
+   if (password.length < 4) {
+    window.alert('Please enter a password.');
+    return;
+  }
+firebase.auth().signInWithEmailAndPassword(email , password).then( function(user){
+
+  
+  var currentUser = firebase.auth().currentUser
+  window.alert("Welcom Back: "+currentUser.email);
+
+ sessionStorage.setItem('userId22',currentUser.uid);
+ if(currentUser.uid != null)
+{
+
+firebase.database().ref('MEMBER').child(currentUser.uid).once('value').then(function(snapshot) {
+var userinfo = snapshot.val(); 
+var isOwner=userinfo['PropertyOwner'];
+
+
+
+if(isOwner){
+window.location.href = "OwnerDashboard.html";
+
+}
+else
+{
+window.location.href = "NewMemberDashboard.html";
+}
+
+})
+
+
+}
+
+})
+.catch(function(error){
+alert("Login Failed!", error);
+});
+//}
+//else 
+//{
+//  window.alert("Please fill out all fields");
+//}
+
+
+}
+
+function writeCookie(name,value,days) {
+  var date, expires;
+  if (days) {
+      date = new Date();
+      date.setTime(date.getTime()+(days*24*60*60*1000));
+      expires = "; expires=" + date.toGMTString();
+          }else{
+      expires = "";
+  }
+  document.cookie = name + "=" + value + expires + "; path=/";
+}
+</script>
+
+
+<script>
+////////////Register///////////
+
+function RegisterP(){
+
+var Pemail = document.getElementById('PEmail').value;
+var Ppassword = document.getElementById('PPassword').value;
+var PVpassprd=document.getElementById('PVerifyPassword').value;
+var Pvemail=document.getElementById('PVerifyEmail').value;
+if (Pemail.length < 4) {
+ window.alert('Please enter an email address.');
+ return;
+}
+if (Ppassword.length < 4) {
+ window.alert('Please enter a password.');
+ return;
+}
+if(Pemail!=Pvemail){
+window.alert('Email and verifyEmail does not match ');
+return;}
+if(Ppassword!=PVpassprd){
+window.alert('Password and VerifyPassword does not match ')
+return;}
+// Create user with email and pass.
+// [START createwithemail]
+
+firebase.auth().createUserWithEmailAndPassword(Pemail, Ppassword).then(function(user){ 
+  firebase.auth().currentUser.sendEmailVerification();
+  firebase.database().ref("MEMBER").child(firebase.auth().currentUser.uid,).set({
+    MID :firebase.auth().currentUser.uid,
+    FullName:document.getElementById('PFullName').value,
+    Username:document.getElementById('PUsername').value,
+    Email:document.getElementById('PEmail').value,
+    PropertyOwner:true
+});
+window.alert('congrats'); 
+
+
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // [START_EXCLUDE]
+  if (errorCode == 'auth/weak-password') {
+    alert('The password is too weak.');   
+  } else {
+    alert(errorMessage); 
+  }
+  console.log(error);
+  // [END_EXCLUDE]
+});
+
+
+document.getElementById('PPassword').value = "";
+document.getElementById('PVerifyPassword').value= "";
+return;
+}
+
+
+
+const auth=firebase.auth();
+
+
+function RegisterM(){
+
+      var email = document.getElementById('MEmail').value;
+      var password = document.getElementById('MPassword').value;
+      var Vpassprd=document.getElementById('MVerifyPassword').value;
+      var vemail=document.getElementById('MVerifyEmail').value;
+     if (email.length < 4) {
+       window.alert('Please enter an email address.');
+       return;
+     }
+     
+     if (password.length < 4) {
+       window.alert('Please enter a password.');
+       return;}
+
+      if(email!=vemail){
+         window.alert('Email and verifyEmail does not match ');
+          return;}
+
+      if(password!=Vpassprd){
+          window.alert('Password and VerifyPassword does not match ');
+           return;}
+      // Create user with email and pass.
+      // [START createwithemail]
+      
+      firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user){
+     
+        firebase.auth().currentUser.sendEmailVerification();
+        firebase.database().ref("MEMBER").child(firebase.auth().currentUser.uid,).set({
+          MID :firebase.auth().currentUser.uid,
+          FullName:document.getElementById('MFullName').value,
+          Username:document.getElementById('MUsername').value,
+          Email:document.getElementById('MEmail').value,
+          PropertyOwner:false
+      
+  });
+  window.alert('congrats'); 
+ 
+
+      }).catch(function(error) {
+        // Handle Errors here.
+       
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // [START_EXCLUDE]
+ 
+        if (errorCode == 'auth/weak-password') {
+          alert('The password is too weak.');
+         
+        } else {
+          alert(errorMessage);
+        
+        }
+        console.log(error);
+        // [END_EXCLUDE]
+    
+   
+      
+     });
+ 
+   
+     document.getElementById('MPassword').value = "";
+     document.getElementById('MVerifyPassword').value= "";
+     return;
+    
+}
+</script>
+
+<script type="text/javascript">
+   function toggleLogin() {
+      document.querySelector(".overlay").classList.toggle("open");
+    }
+    function toggleSignUpP() {
+      document.querySelector(".overlay2").classList.toggle("open");
+    }
+    function toggleSignUpM() {
+      document.querySelector(".overlay3").classList.toggle("open");
+    }
+</script>
+
+
+<script>
+     $(document).ready(function() {
+  
+  $('.slick-slider').bxSlider({
+    minSlides: 1,
+    maxSlides: 1,
+    controls: false
+  });
+  
+  $( ".explore-button" ).hover(function() {
+    $( this ).parent().addClass("hovered-card");
+  }, function() {
+    $( this ).parent().removeClass("hovered-card");
+  }
+);
+  
+});
+  </script>
 
  </body>
 
