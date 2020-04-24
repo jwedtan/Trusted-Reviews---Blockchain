@@ -400,11 +400,15 @@ position: absolute;
   
 }
 .main-nav {
-  margin-left: 150px; 
+ margin-right: 90%;
+ margin-left: 0;
   z-index: 1;
+  margin-top: 0;
 }
 .main-nav ul{ 
 color: #222;
+margin-left: 10%;
+margin-top: 0;
  }
 .main-nav a {
   line-height: 68px;
@@ -416,6 +420,7 @@ color: #222;
 }
 .main-nav a:hover {
   border-bottom: 2px solid grey;
+  
 }
 
 .account {
@@ -464,7 +469,20 @@ background: #eaeaea;
   margin-left: 600px;
  }
 
+ #emailUs{
+  margin-bottom: 30px;
+  margin-right: 20%;
+  margin-left: 16%;
+  text-align: center;
+  width: 45%;
+  /* padding-right: 20%; */
+  padding-left: 7%;
+  padding-top: 2%;
 
+}
+#Notifications{
+  overflow: scroll;
+}
 
 	</style>
 	<title>Dashboard</title>
@@ -474,15 +492,13 @@ background: #eaeaea;
   <header class="main-header">
     <div class="header">
     <img src="media/logo.png" class="webLogo">
-<!-- //////////////////////////////////// -->
-</div>
-<!----->
+      </div>
       <nav class="main-nav">
-       
       <ul>
          <li><a href="index.html" style="color: grey; text-decoration: none;">Home</a></li>
+         <li><a href="HolidayHomes.html" style="color: grey; text-decoration: none;">Holiday Homes</a></li>
          <li><a href="aboutus.html" style="color: grey; text-decoration: none;">About us</a></li>
-          <button class="btn" id="sign-out" onclick="logout()">Sign Out</button>
+          <button  class="btn btn-secondary"id="sign-out" onclick="logout()">Sign Out</button>
       </ul>
       </nav>
       </header>
@@ -570,59 +586,56 @@ background: #eaeaea;
 
 
 <!--Footer-->
-<div style="display: inline;">
-      <footer class="new_footer_area bg_color">
-            <div class="new_footer_top">
-                <div class="container">
-                    <div class="row">
-                      
-                        <div class="col-lg-3 col-md-6">
-                            <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
-                                <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
-                                <p>Contact us via Email <br> We are always there for you!</p>
-                                    <button class="btn btn_get btn_get_two"><a href="mailto:TrustedReviewsBC@gmail.com?Subject=Contact%20Trusted Reviews" target="_top">Email us</button>
-                                    <p class="mchimp-errmessage" style="display: none;"></p>
-                                    <p class="mchimp-sucmessage" style="display: none;"></p>
-                            </div>
-                        </div>
-                      
-                        <div class="col-lg-3 col-md-6">
-                            <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
-                                <h3 class="f-title f_600 t_color f_size_18">More</h3>
-                                <ul class="list-unstyled f_list">
-                                    <li><a href="AboutUs.html">About us</a></li>
-                                    <li><a href="#">FAQ</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
-                                <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
-                                <div class="f_social_icon">
-                                    <a href="https://facebook.com" class="fab fa-facebook"></a>
-                                    <a href="https://twitter.com/trustedreviewsB" class="fab fa-twitter"></a>
-                                    <a href="https://linkedin.com" class="fab fa-linkedin"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer_bg">
-                    <div class="footer_bg_one"></div>
-                    <div class="footer_bg_two"></div>
-                </div>
-            </div>
-            <div class="footer_bottom">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-sm-7">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
 
-</div>
+<footer class="new_footer_area bg_color">
+  <div class="new_footer_top">
+    <div class="container">
+      <div class="row">
+
+       
+        <div class="col-lg-3 col-md-6">
+          <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+              <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
+              <div class="f_social_icon">
+                  <a href="https://facebook.com" class="fab fa-facebook"></a>
+                  <a href="https://twitter.com/trustedreviewsB" class="fab fa-twitter"></a>
+                  <a href="https://linkedin.com" class="fab fa-linkedin"></a>
+              </div>
+          </div>
+      </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+              <h3 class="f-title f_600 t_color f_size_18">More</h3>
+              <ul class="list-unstyled f_list">
+                  <li><a href="AboutUs.html">About us</a></li>
+                  <li><a href="#">FAQ</a></li>
+              </ul>
+          </div>
+      </div>
+
+      
+
+    <div class="col-lg-3 col-md-6">
+      <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+        <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
+        <p>Contact us via Email <br> We are always there for you!</p>
+            <a class="btn btn_get btn_get_two" id="emailUs" href="mailto:TrustedReviewsBC@gmail.com?Subject=Contact%20Trusted Reviews" target="_top"> Email us </a>   
+      </div>
+    </div>
+
+    
+    <div class="footer_bg">
+      <div class="footer_bg_one"></div>
+      <div class="footer_bg_two"></div>
+  </div>
+
+      </div>
+    </div>
+  </div>
+
+</footer>
+
 
 
 

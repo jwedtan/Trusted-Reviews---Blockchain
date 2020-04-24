@@ -3,9 +3,9 @@
 <html>
 <head>
        <title>Member Dashboard</title>
-<!-- <meta charset="utf-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
- -->
+
 <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
       <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
@@ -84,6 +84,7 @@ body {
    /*rgba(44,62,80, 0.4);*/
   color: #eee;
   min-height: 600px;
+ 
 }
 
 a{
@@ -145,7 +146,7 @@ a{
   padding-left: 8px;
   padding-top: 10px;
   flex-direction: column;
-  justify-contect: space-between;
+  justify-content: space-between;
   width: 256px;
   height: auto;
   background: #eee;
@@ -392,9 +393,12 @@ h5 {
 .main-header {
   width: 100%;
   border-bottom: 1px solid grey;
-  position: absolute;
-  top: 0;
+  /* position: absolute;
+  top: 0; */
   padding-top: 0;
+  margin-left: 0;
+  margin-top: 0;
+  margin-bottom: 2%;
 }
 
 .webLogo {
@@ -410,16 +414,20 @@ position: absolute;
 .main-nav,
 .main-nav li {
   float: left;
-  color: grey;
+  color:grey;
   
   
 }
 .main-nav {
- margin-right: 60%;
+ margin-right: 90%;
+ margin-left: 0;
   z-index: 1;
+  margin-top: 0;
 }
 .main-nav ul{ 
 color: #222;
+margin-left: 10%;
+margin-top: 0;
  }
 .main-nav a {
   line-height: 68px;
@@ -431,6 +439,7 @@ color: #222;
 }
 .main-nav a:hover {
   border-bottom: 2px solid grey;
+  
 }
 
 
@@ -494,9 +503,9 @@ background: #eaeaea;
   /* padding-top: none; */
   margin-top: 1%;
   padding-top: 0.5%;
-  margin-right: 13%;
+  /* margin-right: 13%; */
   margin-top: 10px;
-  padding-right: 6%;
+  padding-right: 7%;
  }
  
 #editbtn{
@@ -509,6 +518,21 @@ h1{
     color: #300095;
     font-weight: bold;
    }
+
+#emailUs{
+  margin-bottom: 30px;
+  margin-right: 27%;
+  text-align: center;
+  width: 45%;
+  /* padding-right: 20%; */
+  padding-left: 7%;
+  padding-top: 2%;
+
+}
+#Notifications , #LastReviews{
+  overflow: scroll;
+}
+
 
 	</style>
 	<title>Dashboard</title>
@@ -601,7 +625,55 @@ h1{
   </div></div>
 
 
+<!--Footer-->
+<footer class="new_footer_area bg_color">
+  <div class="new_footer_top">
+    <div class="container">
+      <div class="row">
 
+       
+        <div class="col-lg-3 col-md-6">
+          <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+              <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
+              <div class="f_social_icon">
+                  <a href="https://facebook.com" class="fab fa-facebook"></a>
+                  <a href="https://twitter.com/trustedreviewsB" class="fab fa-twitter"></a>
+                  <a href="https://linkedin.com" class="fab fa-linkedin"></a>
+              </div>
+          </div>
+      </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+              <h3 class="f-title f_600 t_color f_size_18">More</h3>
+              <ul class="list-unstyled f_list">
+                  <li><a href="AboutUs.html">About us</a></li>
+                  <li><a href="#">FAQ</a></li>
+              </ul>
+          </div>
+      </div>
+
+      
+
+    <div class="col-lg-3 col-md-6">
+      <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+        <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
+        <p>Contact us via Email <br> We are always there for you!</p>
+            <a class="btn btn_get btn_get_two" id="emailUs" href="mailto:TrustedReviewsBC@gmail.com?Subject=Contact%20Trusted Reviews" target="_top"> Email us </a>   
+      </div>
+    </div>
+
+    
+    <div class="footer_bg">
+      <div class="footer_bg_one"></div>
+      <div class="footer_bg_two"></div>
+  </div>
+
+      </div>
+    </div>
+  </div>
+
+</footer>
 
   <script>
               var firebaseConfig = {
@@ -647,7 +719,7 @@ h1{
       /// this is for last reveiws 
 
       var pid;
-      firebase.database().ref("Reviews").orderByChild('UID').equalTo(uu).limitToLast(4).once('value').then(function (snapshot){
+      firebase.database().ref("Reviews").orderByChild('UID').equalTo(uu).limitToLast(6).once('value').then(function (snapshot){
        if(snapshot.val()!=null)
        {
          var keyy;
@@ -721,6 +793,11 @@ h1{
             if(thiqaah==null){
               thiqaah=0;
             }
+            if(snapshot.val().URL==null){
+              document.getElementById("profile-card").innerHTML=
+               '<i class="profile-image-none material-icons">account_circle</i>'
+              
+            }
             if(snapshot.val().URL!=null){
            var memImage=snapshot.val().URL;}
             firebase.database().ref("Reviews").orderByChild('UID').equalTo(uu).once('value').then(function(r){
@@ -793,71 +870,7 @@ window.location.href = "index.html"
         </script>
 
 </body>
-<!--Footer-->
-      <footer class="new_footer_area bg_color">
-            <div class="new_footer_top">
 
-
-                <div class="container">
-                    <div class="row">
-
-
-                        <div class="col-lg-3 col-md-6">
-                            <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
-                                <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
-                                <p>Contact us via Email <br> We are always there for you!</p>
-                                    <button class="btn btn_get btn_get_two"><a href="mailto:TrustedReviewsBC@gmail.com?Subject=Contact%20Trusted Reviews" target="_top">Email us</button>
-                                    <p class="mchimp-errmessage" style="display: none;"></p>
-                                    <p class="mchimp-sucmessage" style="display: none;"></p>
-                            </div>
-                        </div>
-
-                      
-                        <div class="col-lg-3 col-md-6">
-                            <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
-                                <h3 class="f-title f_600 t_color f_size_18">More</h3>
-                                <ul class="list-unstyled f_list">
-                                    <li><a href="AboutUs.html">About us</a></li>
-                                    <li><a href="#">FAQ</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-
-                        <div class="col-lg-3 col-md-6">
-                            <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
-                                <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
-                                <div class="f_social_icon">
-                                    <a href="https://facebook.com" class="fab fa-facebook"></a>
-                                    <a href="https://twitter.com/trustedreviewsB" class="fab fa-twitter"></a>
-                                    <a href="https://linkedin.com" class="fab fa-linkedin"></a>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-
-
-                <div class="footer_bg">
-                    <div class="footer_bg_one"></div>
-                    <div class="footer_bg_two"></div>
-                </div>
-
-
-            </div>
-
-            
-            <div class="footer_bottom">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-sm-7">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
 
 
 
