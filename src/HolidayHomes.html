@@ -423,6 +423,7 @@ var uu = sessionStorage.getItem('userId22');
           
 if(uu!=null)
 {
+
    document.getElementById('sign-in').style.display='none';
    document.getElementById('sign-upP').style.display='none';
    document.getElementById('sign-upM').style.display='none';
@@ -516,6 +517,7 @@ firebase.database().ref("Property").once('value').then(function (snapshot){
         pName=property.val().PropertyName;
         pDec=property.val().Description;
         pImg=property.val().Image;
+        Ptype=property.val().Type;
         pReviewCount = reviewSnap.numChildren();
          pRate=0;
         i=0;
@@ -537,6 +539,7 @@ firebase.database().ref("Property").once('value').then(function (snapshot){
 
                         '  <span class="fa fa-star matginAuto" style="margin-right: 10px; color:gold"></span>'+
                        '  <label class="matginAuto" style="margin-left: 0;">'+pRate+' Stars</label> '+ '</br>' + 
+                       '  <label class="matginAuto" style="margin-left: 0;">'+Ptype+' Type</label> '+ '</br>' + 
 
                         ' <button onClick="redirect(\''+pid+'\')" class="MoreInfoButton">More Info</button>'+
                  
@@ -570,6 +573,7 @@ firebase.database().ref("Property").once('value').then(function (snapshot){
 
                         '  <span class="fa fa-star matginAuto" style="margin-right: 10px; color:gold"></span>'+
                        '  <label class="matginAuto" style="margin-left: 0;">'+pRate+' Stars</label> '+ '</br>' + 
+                       '  <label class="matginAuto" style="margin-left: 0;">'+Ptype+' Type</label> '+ '</br>' + 
 
                         ' <button onClick="redirect(\''+pid+'\')" class="MoreInfoButton">More Info</button>'+
                  
@@ -596,10 +600,29 @@ function search()
 
 }
 
-function redirect (propertyID)
+function redirect (propertyID){
+if(uu!=null){
+firebase.database().ref('MEMBER').child(uu).once('value').then(function(snapshot) {
+  var userinfo = snapshot.val(); 
+var isOwner=userinfo['PropertyOwner'];
+alert(isOwner);
 
+
+if(isOwner){
+window.location.href = "SingleHolidayHome-PO.html?p="+propertyID;
+
+}
+else
 {
-  window.location.href="SingleHolidayHome.html?p="+propertyID;
+window.location.href = "SingleHolidayHome.html?p="+propertyID;
+}
+})
+}
+else{
+  window.location.href = "SingleHolidayHome.html?p="+propertyID;
+}
+
+
 }
 function logout()
          {

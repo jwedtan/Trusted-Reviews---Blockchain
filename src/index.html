@@ -74,7 +74,7 @@
           </br>
           </br>
           </div>
-         <h2>Forget Password?</h2>
+         <button onclick="forget2()">Forget Password?</button>
           </div>
           </div>  
 
@@ -469,7 +469,7 @@ firebase.auth().signInWithEmailAndPassword(email , password).then( function(user
 
   
   var currentUser = firebase.auth().currentUser
-  window.alert("Welcom Back: "+currentUser.email);
+  window.alert("Welcome Back: "+currentUser.email);
 
  sessionStorage.setItem('userId22',currentUser.uid);
  if(currentUser.uid != null)
@@ -518,6 +518,30 @@ function writeCookie(name,value,days) {
       expires = "";
   }
   document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function forget2(){
+  var email = document.getElementById('LEmail').value;
+
+
+  if (email.length < 4) {
+    window.alert('Please enter an email address.');
+    return;
+  }
+  alert("hello");
+  
+
+  var auth = firebase.auth();
+var emailAddress =email;
+
+auth.sendPasswordResetEmail(emailAddress).then(function() {
+  // Email sent.
+  alert("Please check your email to rest your password");
+}).catch(function(error) {
+  alert("Falid ");
+  // An error happened.
+});
+
 }
 </script>
 

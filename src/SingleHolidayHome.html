@@ -751,8 +751,7 @@ return;
 {
   var uu = sessionStorage.getItem('userId22');
   if(uu===null)
-  {
-    window.location ="Login.html";
+  {window.alert("You have to log in to like a review!");
   }else
   {
     firebase.database().ref("Reviews").child(RID).child('UID').once('value').then(function (uidsnap){
@@ -830,7 +829,8 @@ function addDislike(RID)
   var uu = sessionStorage.getItem('userId22');
   if(uu===null)
   {
-    window.location ="Login.html";
+   
+    window.alert("You have to log in to dislike a review!");
   }
   else
   {

@@ -686,7 +686,7 @@ background: #eaeaea;
               
             
 
-                    firebase.database().ref("Reviews").orderByChild('PID').equalTo(prpID).once('value').then(function (snapshot){
+                    firebase.database().ref("Reviews").orderByChild('PID').equalTo(prpID).limitToLast(6).once('value').then(function (snapshot){
           snapshot.forEach(function (review){
             var ReviewTxt=review.val().Txt;
             var ReviewerID=review.val().UID;
