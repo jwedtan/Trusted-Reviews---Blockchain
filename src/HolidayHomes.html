@@ -43,6 +43,7 @@
           font-size: 19px;
 
         }
+
         h2{
           color: #005451;
           font-family: 'Oswald', sans-serif;
@@ -54,6 +55,12 @@
           width: 33%;
           margin: 1% auto;
         }
+        .main-header {
+  width: 100%;
+  border-bottom: 1px solid grey;
+  position: absolute;
+  top: 0;
+}
 
 .MoreInfoButton{
 display: inline-block;
@@ -469,6 +476,21 @@ if(city!=null)
               {
                 pRate=pRate/pReviewCount;
             
+
+        describ = function(pDec, length, ending) {
+    if (length == null) {
+      length = 100;
+    }
+    if (ending == null) {
+      ending = '...';
+    }
+    if (pDec.length > length) {
+      return pDec.substring(0, length - ending.length) + ending;
+    } else {
+      return pDec;
+    }
+  }
+
             document.getElementById('homsList').innerHTML+=
 
          '<div class="SearchCities">'+
@@ -477,7 +499,8 @@ if(city!=null)
 
 
                   '  <h2>'+pName+'</h3>'+
-                  '  <p>'+pDec+'</p>'+
+                  '  <label  id="Ptype" class="matginAuto" style="margin-left: 0;">Type: '+Ptype+' </label> '+ '</br>' + 
+                  '  <p>'+describ(pDec,400)+'</p>'+
 
                       '   <span onClick="addReview(\''+pid+'\')" class="fa fa-clipboard matginAuto" style="margin-right: 10px;cursor: pointer;"> </span>'+
                       ' <label class="matginAuto" style="margin-left: 0;">'+pReviewCount+' Reviews</label>'+ '</br>' + 
@@ -521,6 +544,24 @@ firebase.database().ref("Property").once('value').then(function (snapshot){
         pReviewCount = reviewSnap.numChildren();
          pRate=0;
         i=0;
+
+
+
+        describ = function(pDec, length, ending) {
+    if (length == null) {
+      length = 100;
+    }
+    if (ending == null) {
+      ending = '...';
+    }
+    if (pDec.length > length) {
+      return pDec.substring(0, length - ending.length) + ending;
+    } else {
+      return pDec;
+    }
+  }
+
+
         if(reviewSnap.val()===null)
         {
          
@@ -532,14 +573,14 @@ firebase.database().ref("Property").once('value').then(function (snapshot){
 
 
                   '  <h2>'+pName+'</h3>'+
-                  '  <p>'+pDec+'</p>'+
+                  '  <label  id="Ptype" class="matginAuto" style="margin-left: 0;">Type: '+Ptype+' </label> '+ '</br>' + 
+                  '  <p>'+describ(pDec,400)+'</p>'+
 
                       '   <span onClick="addReview(\''+pid+'\')" class="fa fa-clipboard matginAuto" style="margin-right: 10px;cursor: pointer;"> </span>'+
-                      ' <label class="matginAuto" style="margin-left: 0;">'+pReviewCount+' Reviews</label>'+ '</br>' + 
+                      ' <label class="matginAuto" style="margin-left: 0;">'+pReviewCount+' Reviews</label>'+ 
 
                         '  <span class="fa fa-star matginAuto" style="margin-right: 10px; color:gold"></span>'+
                        '  <label class="matginAuto" style="margin-left: 0;">'+pRate+' Stars</label> '+ '</br>' + 
-                       '  <label class="matginAuto" style="margin-left: 0;">'+Ptype+' Type</label> '+ '</br>' + 
 
                         ' <button onClick="redirect(\''+pid+'\')" class="MoreInfoButton">More Info</button>'+
                  
@@ -566,14 +607,15 @@ firebase.database().ref("Property").once('value').then(function (snapshot){
 
 
                   '  <h2>'+pName+'</h3>'+
-                  '  <p>'+pDec+'</p>'+
+                  '  <label  id="Ptype" class="matginAuto" style="margin-left: 0;">Type: '+Ptype+' </label> '+ '</br>' + 
+
+                  '  <p>'+describ(pDec,400)+'</p>'+
 
                       '   <span onClick="addReview(\''+pid+'\')" class="fa fa-clipboard matginAuto" style="margin-right: 10px;cursor: pointer;"> </span>'+
                       ' <label class="matginAuto" style="margin-left: 0;">'+pReviewCount+' Reviews</label>'+ '</br>' + 
 
                         '  <span class="fa fa-star matginAuto" style="margin-right: 10px; color:gold"></span>'+
                        '  <label class="matginAuto" style="margin-left: 0;">'+pRate+' Stars</label> '+ '</br>' + 
-                       '  <label class="matginAuto" style="margin-left: 0;">'+Ptype+' Type</label> '+ '</br>' + 
 
                         ' <button onClick="redirect(\''+pid+'\')" class="MoreInfoButton">More Info</button>'+
                  
@@ -627,7 +669,7 @@ else{
 function logout()
          {
           sessionStorage.removeItem('userId22');
-          window.location.href = "HomePage2.html"
+          window.location.href = "index.html"
          }
 
 

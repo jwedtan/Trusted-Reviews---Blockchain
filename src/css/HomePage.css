@@ -459,13 +459,13 @@ font-size: 30px;
   Header
   ========================================
 */
-.main-header {
+/*.main-header {
   width: 100%;
   border-bottom: 1px solid grey;
   position: absolute;
   top: 0;
 }
-
+*/
 .webLogo {
 position: absolute;
       top: 0;
@@ -669,4 +669,17 @@ font-family: 'Open Sans', sans-serif;
         color: #64318D;
   margin-bottom: 10px;
 font-family: 'Open Sans', sans-serif;
+}
+#forget{
+  text-align: center;
+  font-size: 15px;
+  padding-left: 110px;
+  color: #295069;
+}
+
+#Ptype{
+  font-weight: bold;
+          font-family: 'Oswald', sans-serif;
+  color: #21697e;
+  font-size: 20px;
 }

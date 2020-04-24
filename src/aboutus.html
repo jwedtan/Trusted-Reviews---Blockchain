@@ -33,6 +33,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 
+<style>
+  .main-header {
+  width: 100%;
+  border-bottom: 1px solid grey;
+  position: absolute;
+  top: 0;
+}
+</style>
 </head>
  <body>
        <header class="main-header">
@@ -528,7 +536,7 @@ firebase.database().ref("Property").once('value').then(function (POwnerList0){
 function logout()
          {
           sessionStorage.removeItem('userId22');
-          window.location.href = "HomePage2.html"
+          window.location.href = "index.html"
          }
 </script>
 
