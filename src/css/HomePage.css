@@ -576,16 +576,16 @@ background: #eaeaea;
  font-family: 'Ubuntu Condensed', sans-serif;
 }
 .searchBtn{
-      margin-right: 500px;
+      margin-right: 600px;
       font-size: 20px;
       font-weight: bold;
-      width: 88px;
+      width: 200px;
       height: 32px;
       color: #300095;
       font-family: serif;
-       border-radius: 20px;
+       border-radius: 10px;
        background-color: transparent;
-    border: 2px solid #fff;
+    border: 2px solid #dadada;
     }
 
     .searchBtn:hover {
@@ -682,4 +682,9 @@ font-family: 'Open Sans', sans-serif;
           font-family: 'Oswald', sans-serif;
   color: #21697e;
   font-size: 20px;
+}
+.searchText{
+  font-size: 20px;
+ font-family: 'Ubuntu Condensed', sans-serif;
+  color: #3e5c59;
 }

@@ -168,6 +168,7 @@ display: inline-block;
       background-color: transparent;
       transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
       transform-style: preserve-3d;
+      background-color: #f4f5f6;
     }
     
     .searchBox {
@@ -203,6 +204,9 @@ display: inline-block;
           margin-left: 5%;
           font-weight: bold;
     }
+    #emailUS{
+  color: #dadada;
+}
  </style>
 
     </head>
@@ -359,7 +363,7 @@ display: inline-block;
                             <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
                                 <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
                                 <p>Contact us via Email <br> We are always there for you!</p>
-                                    <button class="btn btn_get btn_get_two"><a href="mailto:TrustedReviewsBC@gmail.com?Subject=Contact%20Trusted Reviews" target="_top">Email us</button>
+                                    <button class="btn btn_get btn_get_two"><a id="emailUS" href="mailto:TrustedReviewsBC@gmail.com?Subject=Contact%20Trusted Reviews" target="_top">Email us</button>
                                     <p class="mchimp-errmessage" style="display: none;"></p>
                                     <p class="mchimp-sucmessage" style="display: none;"></p>
                                 </form>
