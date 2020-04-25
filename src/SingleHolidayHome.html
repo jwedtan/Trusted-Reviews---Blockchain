@@ -391,7 +391,10 @@ background: #eaeaea;
 #emailUS{
   color: #dadada;
 }
-
+#likebtn, #dislikebtn{
+  color:#300095; 
+  background-color: #eaeaea;
+}
 
 </style>
 </head>
@@ -429,7 +432,7 @@ background: #eaeaea;
             <p id="desc"> </p>
             <div id="location">
               </div>  
-            <p id="txtRate" class="p-lite" style="font-size: 27px;">0 Stars</p>
+            <p id="txtRate" class="p-lite" style="font-size: 27px; margin-right: 10%;">0 Stars</p>
           </div>
          
         </div>
@@ -578,10 +581,13 @@ function handleAddRev(){
             document.getElementById('propName').innerText=property.val().PropertyName;
             document.getElementById('property-img').src=property.val().Image;
             document.getElementById('desc').innerText=property.val().Description;
-                  document.getElementById('txtRate').innerHTML=pRate0+" Stars";
+                  document.getElementById('txtRate').innerHTML+=pRate0+" Stars";
                   document.getElementById('location').innerHTML+=
-            '<span  class="fa fa-map-marker icon" onclick="SClick(\'https://maps.google.com/?q='+property.val().Location['lat']+
-            ','+property.val().Location['lng']+'\')"></span>'; 
+                  '<svg class="bi bi-map" style="color:purple;" onclick="SClick(\'https://maps.google.com/?q=' + property.val().Location['lat']+ ','+ property.val().Location['lng']+'\')" width="1.5em" height="2.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">'+
+                  '<path fill-rule="evenodd" d="M15.817.613A.5.5 0 0116 1v13a.5.5 0 01-.402.49l-5 1a.502.502 0 01-.196 0L5.5 14.51l-4.902.98A.5.5 0 010 15V2a.5.5 0 01.402-.49l5-1a.5.5 0 01.196 0l4.902.98 4.902-.98a.5.5 0 01.415.103zM10 2.41l-4-.8v11.98l4 .8V2.41zm1 11.98l4-.8V1.61l-4 .8v11.98zm-6-.8V1.61l-4 .8v11.98l4-.8z" clip-rule="evenodd"/>'+
+                   '</svg>';
+
+
                   
               }
               reviewCount=reviewSnap.numChildren();
@@ -597,8 +603,9 @@ function handleAddRev(){
                   document.getElementById('desc').innerText=property.val().Description;
                   document.getElementById('txtRate').innerText=pRate0+" Stars";
                   document.getElementById('location').innerHTML+=
-            '<span  class="fa fa-map-marker icon" onclick="SClick(\'https://maps.google.com/?q='+property.val().Location['lat']+','
-            +property.val().Location['lng']+'\')"></span>';
+                  '<svg class="bi bi-map"  style="color:purple;" onclick="SClick(\'https://maps.google.com/?q=' + property.val().Location['lat']+ ','+ property.val().Location['lng']+'\')" width="1.5em" height="2.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">'+
+                  '<path  fill-rule="evenodd" d="M15.817.613A.5.5 0 0116 1v13a.5.5 0 01-.402.49l-5 1a.502.502 0 01-.196 0L5.5 14.51l-4.902.98A.5.5 0 010 15V2a.5.5 0 01.402-.49l5-1a.5.5 0 01.196 0l4.902.98 4.902-.98a.5.5 0 01.415.103zM10 2.41l-4-.8v11.98l4 .8V2.41zm1 11.98l4-.8V1.61l-4 .8v11.98zm-6-.8V1.61l-4 .8v11.98l4-.8z" clip-rule="evenodd"/>'+
+                   '</svg>';
                   
                 }
               });
@@ -644,9 +651,9 @@ function handleAddRev(){
           +'<div class="comment__rate">'+ReviewRate+
             ' Stars<div class="comment__text">'+ReviewTxt+'</div>'+
             
-          '<p class="comment__date" style="float: right;">'+ReviewDate+'</p></div>'+
-          '<div class="comment__footer">'+'<button style="margin-bottom:3%" class="btn" id="green" onclick="addLike(\''+Review.key+'\')">'+ReviewLike +' <i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i></button>'+
-          '<button style="margin-bottom:3%" class="btn" id="red" onclick="addDislike(\''+Review.key+'\')">'+ReviewDislike+' <i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i></button>'
+          '<p class="comment__date" style="float: right;">'+ReviewDate+'</p></div></br>'+
+          '<div class="comment__footer">'+'<button style="margin-bottom:3%; margin-right:1%" class="btn btn_secondary" id="likebtn" onclick="addLike(\''+Review.key+'\')">'+ReviewLike +' <i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i></button>'+
+          '<button style="margin-bottom:3%" class="btn" id="dislikebtn" onclick="addDislike(\''+Review.key+'\')">'+ReviewDislike+' <i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i></button>'
           
           
           
