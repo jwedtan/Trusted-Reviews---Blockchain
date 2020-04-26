@@ -48,7 +48,7 @@
           color: #005451;
           font-family: 'Oswald', sans-serif;
          font-size: 35px;
-         font-weight: bold;        }
+         font-weight: bold;     }
 
 .search{
           display: flex;
@@ -469,6 +469,7 @@ if(city!=null)
             pName=property.val().PropertyName;
             pDec=property.val().Description;
             pImg=property.val().Image;
+            Ptype=property.val().Type;
             pReviewCount = reviewSnap.numChildren();
 
                pRate=0;
@@ -577,7 +578,7 @@ firebase.database().ref("Property").once('value').then(function (snapshot){
 
 
                   '  <h2>'+pName+'</h3>'+
-                  '  <label  id="Ptype" class="matginAuto" style="margin-left: 0;">Type: '+Ptype+' </label> '+ '</br>' + 
+                 // '  <label  id="Ptype" class="matginAuto" style="margin-left: 0;">Type: '+Ptype+' </label> '+ '</br>' + 
                   '  <p>'+describ(pDec,400)+'</p>'+
 
                       '   <span onClick="addReview(\''+pid+'\')" class="fa fa-clipboard matginAuto" style="margin-right: 10px;cursor: pointer;"> </span>'+
@@ -636,7 +637,6 @@ firebase.database().ref("Property").once('value').then(function (snapshot){
   });
 });
 }
-
 function search()
 {
   
@@ -651,7 +651,6 @@ if(uu!=null){
 firebase.database().ref('MEMBER').child(uu).once('value').then(function(snapshot) {
   var userinfo = snapshot.val(); 
 var isOwner=userinfo['PropertyOwner'];
-alert(isOwner);
 
 
 if(isOwner){
