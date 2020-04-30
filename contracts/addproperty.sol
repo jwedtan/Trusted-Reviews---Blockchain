@@ -36,11 +36,11 @@ contract addproperty {
     mapping(uint =>PropertyDetails) public propertiesdet;
     //properties count
     uint public propertyCount;
-    uint[] propertyIds;
+    uint [] propertyIds;
     
     //adding Property
-    function addingproperty(uint propertyId, string memory propertyname, string memory propertytype, string memory propertydesc,
-     string memory propertyaddress,string memory propertycity) public {
+    function addingproperty(uint propertyId, string memory propertyname, string memory propertytype, string memory propertydesc, string memory propertyaddress,
+        string memory propertycity) public {
          require(properties[propertyId].isExist == false, "Property already exists");
          properties[propertyId].Id = propertyId;
          properties[propertyId].propertyowner = msg.sender;
@@ -48,9 +48,9 @@ contract addproperty {
          propertiesdet[propertyId].propertyaddress = propertyaddress;
          propertiesdet[propertyId].propertytype = propertytype;
          propertiesdet[propertyId].propertydesc = propertydesc;
-         propertiesdet[propertyId].propertycity = propertycity;
+         propertiesdet[propertyId].propertycity= propertycity;
          properties[propertyId].isExist = true;
-         propertyCount += 1;
+         propertyCount+=1;
          propertyIds.push(propertyId);
     }
     
@@ -63,10 +63,11 @@ contract addproperty {
         
     //adding review
     function addreview(uint propertyId, string memory review) public{
+        // require(propertiesdet[propertyId].members[msg.sender].checkinned == true , "You haven't checked in in this property");
         properties[propertyId].reviews.push(review);
         properties[propertyId].reviewCount++;
     }
-
+    
     //get review
     function getAReview(uint propertyId, uint index) public view returns (string memory review ){
         review = properties[propertyId].reviews[index];
